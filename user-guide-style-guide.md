@@ -1,6 +1,6 @@
 # Operational Document Style Guide
 
-**Document type:** `user_guide`
+**Document type:** `operational_documents`
 **Applies to:** Administration guides, user guides, installation and deployment guides, and any procedural documentation.
 **Language pair:** Simplified Chinese → English
 **Scope:** Translation style rules covering headings, person, courtesy language, UI interactions, and UI element labeling.
