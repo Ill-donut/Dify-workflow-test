@@ -1,24 +1,24 @@
 ---
-title: Function Notes (AArch64 Architecture)
-author: SmartX Documentation Team
+title: Function support (for the AArch64 architecture)
+author: SmartX documentation team
 hide_title: true
 id: release_notes_05
-sidebar_label: Function Notes (AArch64 Architecture)
+sidebar_label: Function support (for the AArch64 architecture)
 ---
 
-# Function Notes (AArch64 Architecture)
+# Function support (for the AArch64 architecture)
 
-When SMTX OS is deployed on Kunpeng AArch64 servers or Phytium AArch64 servers, the following functions related to virtual machine services are not supported.
+The following functions related to virtual machine services are not available if SMTX OS is deployed on the `Kunpeng AArch64` or `Phytium AArch64` architecture:
 
-- E1000-mode NIC
-- Cirrus, VGA, and QXL-mode graphics cards
+- E1000 NIC
+- Cirrus, VGA, and QXL graphics cards
 - BIOS firmware mode
 - CPU compatibility configuration
-- vGPU function
+- vGPU
 
-When SMTX OS is deployed on Phytium AArch64 servers, the following functions are also not supported.
+The following functions are also not available if SMTX OS is deployed on the `Phytium AArch64` architecture:
 
-- RDMA function
+- RDMA
 - GPU passthrough
 - PCI passthrough NIC
 - SR-IOV passthrough NIC

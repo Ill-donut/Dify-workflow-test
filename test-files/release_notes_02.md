@@ -1,22 +1,24 @@
 ---
-title: Installation and Upgrade Notes
-author: SmartX Documentation Team
+title: Installation and upgrade notes
+author: SmartX documentation team
 hide_title: true
 id: release_notes_02
-sidebar_label: Installation and Upgrade Notes
+sidebar_label: Installation and upgrade notes
 ---
 
-# Installation and Upgrade Notes
+# Installation and upgrade notes
 
-## Installation
+## For installation
 
-For hosts that use the `MegaRAID 9560-8i RAID` card, set the boot mode to **`UEFI`**.
+Set the boot mode to **`UEFI`** for hosts using the `MegaRAID 9560-8i RAID` card.
 
-## Upgrade
+## For upgrade
 
-- When this version of SMTX OS is deployed on cluster nodes, the resources occupied by the system, including physical disk storage space and host CPU and memory, are different from those in earlier versions. Refer to the **System Resource Usage** section in [SMTX OS Configuration and Management Specifications](../config_specs/config_specs_01.md) to confirm in advance that the node resources are sufficient.
+- When deploying SMTX OS 6.2.0 on cluster nodes, the resources required by the system (such as physical disk storage space, host CPU and memory) are diﬀerent from those of earlier versions. To ensure that the nodes have suﬃcient resources, refer to the **System resource usage** section in [_SMTX OS Configuration Specifications_](../config_specs/config_specs_01.md) for details.
 
-- For SMTX OS clusters deployed on Hygon x86_64 and Kunpeng AArch64 servers, if the version is 4.0.x or 5.0.0 to 5.0.2, you must follow the steps below before the upgrade can be completed.
-  1. Upgrade the SMTX OS cluster from the current version to version 5.0.7 (CentOS operating system).
-  2. Use the separately released conversion tool to convert the underlying operating system of the SMTX OS 5.0.7 cluster from CentOS to openEuler.
-  3. Upgrade the SMTX OS 5.0.7 cluster (openEuler operating system) to this version.
+- SMTX OS clusters with the `Hygon x86_64` or `Kunpeng AArch64` architecture and either of version 4.0.x or between 5.0.0 and 5.0.2 will utilize the CentOS operating system. To perform an upgrade on this type of clusters, follow the steps below:
+  1. Upgrade the SMTX OS cluster to 5.0.7.
+  2. Switch the operating system from CentOS to openEuler using a separately released conversion tool.
+  3. Continue upgrading the SMTX OS cluster now using openEuler as the operating system from version 5.0.7 to 6.2.0.
+
+

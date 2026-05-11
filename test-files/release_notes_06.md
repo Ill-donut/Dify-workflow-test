@@ -1,11 +1,11 @@
 ---
-title: Usage Recommendation
-author: SmartX Documentation Team
+title: Recommendation
+author: SmartX documentation team
 hide_title: true
 id: release_notes_06
-sidebar_label: Usage Recommendation
+sidebar_label: Recommendation
 ---
 
-# Usage Recommendation
+# Recommendation
 
-This software version is recommended for deployment in clusters with no more than 64 nodes.
+It is recommended to deploy SMTX OS 6.2.0 on clusters of no more than 64 nodes.

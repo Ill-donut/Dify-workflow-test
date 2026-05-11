@@ -1,90 +1,88 @@
 ---
-title: Version Supporting Information
-author: SmartX Documentation Team
+title: Compatibility
+author: SmartX documentation team
 hide_title: true
 id: release_notes_03
-sidebar_label: Version Supporting Information
+sidebar_label: Compatibility
 ---
 
+# Compatibility
 
-# Version Supporting Information
-
-## Supporting Information for Virtualization Platforms and Server Types
+## Compatibility between virtualization platform and server architecture
 
 <table>
   <thead>
     <tr>
-        <th><strong>Virtualization Platform</strong></th>
-        <th><strong>Server CPU Type</strong></th>
+        <th><strong>Virtualization platform</strong></th>
+        <th><strong>Server CPU architecture</strong></th>
     </tr>
   </thead>
   <tbody>
     <tr>
         <td rowspan="5">ELF</td>
-        <td>Intel x86_64 chip</td>
+        <td>Intel x86_64</td>
     </tr>
     <tr>
-        <td>AMD x86_64 chip</td>
+        <td>AMD x86_64</td>
     </tr>
     <tr>
-        <td>Hygon x86_64 chip</td>
+        <td>Hygon x86_64</td>
     </tr>
     <tr>
-       <td>Kunpeng AArch64 chip</td>
+       <td>Kunpeng AArch64</td>
     </tr>
     <tr>
-       <td>Phytium AArch64 chip</td>
+       <td>Phytium AArch64</td>
     </tr>
     <tr>
         <td rowspan="2">VMware ESXi</td>
-        <td>Intel x86_64 chip</td>
+        <td>Intel x86_64</td>
     </tr>
     <tr>
-        <td>AMD x86_64 chip</td>
+        <td>AMD x86_64</td>
     </tr>
   </tbody>
 </table>
 
-## Supporting Information for SMTX OS and CloudTower Versions
+## Compatibility between SMTX OS and CloudTower
 
-The management service of SMTX OS is provided by CloudTower. This version of SMTX OS cluster supports management only by CloudTower 4.5.0 or later.
+The SMTX OS functions and services are managed by CloudTower. SMTX OS 6.2.0 is compatible with CloudTower 4.5.0 or later.
 
-## Supporting Information for SMTX OS and Other Product Versions
+## Compatibility between SMTX OS and other SmartX products
 
-SMTX OS can be used together with other SmartX products, but only some versions of each product support use with the current version of SMTX OS. See the release notes of the corresponding product for the version support relationship between the two products.
+SMTX OS is compatible with other SmartX products, but only certain versions of each product are compatible with SMTX OS 6.2.0.You can refer to the specific product release notes for the compatibility between that product and SMTX OS.
 
 - Everoute
-- SMTX Kubernetes service
+- SMTX Kubernetes Service
 - SMTX File Storage
 - SMTX Backup and Disaster Recovery
-- Observability Platform
-- Inspection Center
+- Observability
+- Inspector
 - Upgrade Center
 
+## Compatibility between virtualization platforms and VDI scenarios
 
-## Supporting Information for Virtualization Platforms and Application Scenarios
-
-### Virtualization Platform
+### Virtualization platforms
 
 <table>
 <thead>
   <tr>
-    <th><strong>Platform Type</strong></th>
-    <th><strong>Specific Version</strong></th>
-    <th><strong>Deployment Method</strong></th>
-    <th><strong>Storage Protocol</strong></th>
-    <th><strong>Remarks</strong></th>
+    <th><strong>Virtualization platform</strong></th>
+    <th><strong>Version</strong></th>
+    <th><strong>Deployment</strong></th>
+    <th><strong>Storage protocol</strong></th>
+    <th><strong>Notes</strong></th>
   </tr>
 </thead>
 <tbody>
   <tr>
     <td>ELF</td>
     <td>-</td>
-    <td>Host deployment</td>
+    <td>Deployed on host</td>
     <td>iSCSI</td>
     <td>
-       <p>For the Guest OS supported by it, see <em>SMTX OS Virtual Machine Service Compatibility Guide</em> released with the version.</p>
-       <p>Use SMTX VMTools <code>3.2.2</code>.</p></td>
+       <p>Refer to *SMTX OS Virtual Machine Service Compatibility Guide* for supported guest operating systems. </p>
+       <p>SMTX VMTools <code>3.2.2</code> is required for the deployment. </p></td>
   </tr>
   <tr>
     <td rowspan="2">VMware ESXi</td>
@@ -92,9 +90,9 @@ SMTX OS can be used together with other SmartX products, but only some versions 
       <li><p>ESXi 7.0b</p></li>
       <li><p>ESXi 7.0 U1</p></li>
     </ul></td>
-    <td>SCVM deployment</td>
+    <td>Deployed on SCVM</td>
     <td>NFS</td>
-    <td>No VAAI-NAS plugin needs to be installed.</td>
+    <td>No VAAI-NAS plugin is required. </td>
   </tr>
   <tr>
     <td><ul>
@@ -105,17 +103,16 @@ SMTX OS can be used together with other SmartX products, but only some versions 
       <li><p>ESXi 8.0 U2</p></li>
       <li><p>ESXi 8.0 U3</p></li>
     </ul></td>
-    <td>SCVM deployment</td>
+    <td>Deployed on SCVM</td>
     <td>NFS</td>
-    <td>Use VAAI-NAS plugin <code>2.1-4</code>.</td>
+    <td>VAAI-NAS plugin <code>2.1-4</code> is required for the deployment. </td>
   </tr>
 </tbody>
 </table>
 
+### VDI scenarios
 
-### VDI Scenario
-
-In VDI scenarios, SMTX OS can be used with Horizon View and XenDesktop. The supported versions are as follows. In this case, SMTX OS can run only in the SCVM of an ESXi 7.0b host, and VAAI is not supported when a desktop pool is created.
+In VDI scenarios, SMTX OS can be used with Horizon View and XenDesktop, with supported versions listed below. In this case, SMTX OS can only run on the SCVM on ESXi 7.0b hosts, and VAAI is not supported when creating desktop pools.
 
 <table>
 <thead>
@@ -162,3 +159,4 @@ In VDI scenarios, SMTX OS can be used with Horizon View and XenDesktop. The supp
   </tr>
 </tbody>
 </table>
+

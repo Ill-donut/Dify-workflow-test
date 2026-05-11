@@ -1,19 +1,19 @@
 ---
-title: Feature Support Notes
-author: SmartX Documentation Team
+title: Feature support
+author: SmartX documentation team
 hide_title: true
 id: release_notes_04
-sidebar_label: Feature Support Notes
+sidebar_label: Feature support
 ---
 
-# Feature Support Notes
+# Feature support
 
-This software version supports enabling the following functions and features. However, because different virtualization platforms may be used during deployment, the supported features or functions also vary. Using these features and functions has certain requirements for the server architecture and for software and hardware configurations. For the configuration requirements, usage limitations, and impact on other functions of the features and functions listed below, refer to [SMTX OS Feature Notes](../os_property_notes/preface-generic.md) released together with the software.
+The following features are available on SMTX OS 6.2.0. Note that the feature availability varies depending on the virtualization platform. To use these features, refer to [_SMTX OS Feature Notes_](../os_property_notes/preface-generic.md) for the required CPU architecture and software and hardware configurations.
 
 - Boost mode
-- RDMA function
-- SR-IOV feature
-- Persistent cache mode
+- RDMA
+- SR-IOV
+- Volume pinning
 - GPU passthrough
-- vGPU function
+- vGPU
 - Hygon HCT feature

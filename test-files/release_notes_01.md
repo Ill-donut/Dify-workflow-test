@@ -1,157 +1,157 @@
 ---
-title: Release Update Notes
-author: SmartX Documentation Team
+title: What's in this release
+author: SmartX documentation team
 hide_title: true
 id: release_notes_01
-sidebar_label: Release Update Notes
+sidebar_label: What's in this release
 ---
 
-# Release Update Notes
+# What's in this release
 
-## New
+## What's new
 
 ### Virtualization
 
 - Supports enabling Boost mode in SMTX OS (ELF) active-active clusters.
-- Supports editing and displaying IPv6 address and gateway information for VM VLAN NICs and SR-IOV passthrough NICs.
-- Supports setting QoS policies for VM CPU resources.
-- Supports automatically enabling NUMA memory binding when CPU exclusivity is enabled for a VM.
-- Supports attaching CCP devices provided by the Hygon HCT feature to VMs.
-- VMs on Intel x86_64 and Kunpeng AArch64 platforms support automatic configuration of up to 4 virtual disk multi-queues to improve VM performance. <!-- http://jira.smartx.com/browse/ELF-6344 -->
+- Allows editing and displaying the IPv6 address and gateway information for VLAN NICs and SR-IOV passthrough NICs on virtual machines.
+- Supports configuring a QoS policy for virtual machine CPU resources.
+- Automatically enables NUMA memory binding for virtual machines with CPU exclusive enabled.
+- Supports mounting CCP devices provided by the Hygon HCT feature on virtual machines.
+- Supports automatically configuring a maximum of 4 virtual disk multi-queues for virtual machines on Intel x86_64 and Kunpeng AArch64 platforms to improve virtual machine performance. <!-- http://jira.smartx.com/browse/ELF-6344 -->
 
-### Block Storage
+### Block storage
 
-- Supports using a third-party key management service to encrypt virtual volume data at rest.
-- Supports displaying the storage over-provisioning ratio.
+- Supports encrypting virtual volume data at rest using third-party Key Management Services (KMS).
+- Displays the storage overprovisioning ratio.
 
-### Network
+### Networking
 
-- Supports network port connectivity detection and provides alerts for abnormal network ports.
-- Supports automatic IP conflict checks when a VM IP address is created or edited.
-- Supports custom access control for specific host ports and configuring an IP whitelist that is allowed to access these ports.
+- Provides port connectivity test with alerts for abnormal ports.
+- Automatically detects IP conflicts when creating or editing virtual machine IP addresses.
+- Supports customizing access control for host-specific ports and configuring IP allowlists to allow access to these ports.
 
-### Operations and Maintenance Management
+### Operations and management
 
-- Supports removing hosts and converting host roles through CloudTower.
-- Supports SR-IOV passthrough and PCI passthrough for Wangxun NICs.
+- Allows removing hosts and converting the host role on CloudTower.
+- Supports SR-IOV passthrough and PCI passthrough for Netswift NICs.
 
 ### Kernel
 
-- Supports using a virtual PTP hardware clock in AArch64 architecture clusters to ensure time synchronization between VMs and their hosts.<!-- http://jira.smartx.com/browse/SMTXOS-292 -->
-- Supports SSSRAID controller cards.<!-- http://jira.smartx.com/browse/SMTXOS-328 -->
-- Supports Wangxun 10 GbE NICs (txgbe series).<!-- http://jira.smartx.com/browse/SMTXOS-290 -->
-- Supports Phytium S5000C series CPUs.<!-- http://jira.smartx.com/browse/SMTXOS-258 -->
+- Supports virtual PTP hardware clock in clusters with the AArch64 architecture to ensure time synchronization between virtual machines and hosts where they reside. <!-- http://jira.smartx.com/browse/SMTXOS-292 -->
+- Supports SSSRAID controller cards. <!-- http://jira.smartx.com/browse/SMTXOS-328 -->
+- Supports Netswift 10GbE NICs of the txgbe series. <!-- http://jira.smartx.com/browse/SMTXOS-290 -->
+- Supports Phytium S5000C CPUs. <!-- http://jira.smartx.com/browse/SMTXOS-258 -->
 
 ## Improvements
 
 ### Virtualization
 
-- Optimizes VM live migration to increase migration speed and reduce the impact on VM performance during migration.
-- Optimizes VM HA behavior:
-  - Monitors the VM operating system startup status when rebuilding a VM or restoring VM status, and triggers a VM restart when startup fails.
-  - When the SMTX OS operating system is installed on an independent physical disk, the HA behavior when a host file system in the cluster becomes read-only is adjusted to restarting the host.<!-- http://jira.smartx.com/browse/ELF-7154 -->
+- Optimizes virtual machine hot migration by improving migration speed and reducing performance impact during the migration process.
+- Improves virtual machine HA behavior in the following ways:
+  - Monitors the virtual machine operating system booting status during virtual machine rebuild or status recovery, and triggers reboot if the booting fails.
+  - When SMTX OS is installed on a dedicated physical disk, the host HA behavior is adjusted to reboot when the file system encounters read-only exceptions.<!-- http://jira.smartx.com/browse/ELF-7154 -->
 
-### Block Storage
+### Block storage
 
-- Optimizes the granularity of snapshot COW to reduce the physical capacity occupied by volume snapshots.
-- Optimizes read/write performance for non-contiguous I/O of cold data.
-- Optimizes the data allocation policy to avoid performance fluctuations when a volume has a large capacity, occupying 30% to 50% of a node's write cache capacity.
-- Changes the data migration alert to be disabled by default to avoid frequent triggers that disturb users.
-- Adjusts throttling policies for data recovery and migration to avoid service I/O blocking caused by data recovery and migration. It also optimizes the adaptability of data recovery to different hardware conditions, making operation more stable.
-- Adds checks to upgrade prechecks to prevent excessively high write cache capacity usage from causing long data recovery time and to avoid excessively long upgrade time.
-- When data loss caused by consecutive physical disk or node exceptions makes data inaccessible, the system uses the temporary replica function to automatically attempt data repair.
-- Optimizes the data placement policy when data flows between nodes or between the performance tier and capacity tier, improving cache hit rates for read-hot data areas.
-- Optimizes the I/O interruption time during storage service configuration adjustment or cluster upgrade while a host is in maintenance mode, so that in most scenarios the I/O fluctuation perceived by VMs is less than 1 second.
+- Optimizes the granularity of snapshot COW (Copy-on-Write) to reduce the physical capacity used by volume snapshots.
+- Improves read and write performance for non-contiguous I/O for cold data.
+- Optimizes the data allocation policy to prevent performance fluctuations when the volume size occupies 30% - 50% of the node write cache capacity.
+- Updates the data migration alert to be disabled by default to avoid frequent triggers that might disturb users.
+- Adjusts the bandwidth limits for data recovery and migration to prevent I/O blockage,  and optimizes data recovery for better adaptation to diﬀerent hardware conditions to achieve more stable operations.
+- Adds pre-upgrade checks to prevent long data recovery time caused by excessive write cache usage, thus avoiding prolonged upgrade duration.
+- When data becomes inaccessible due to data loss caused by continuous physical disk or node failures, the temporary replica feature will automatically initiate data recovery.
+- Optimizes the data placement policy for data movements between nodes or between performance and capacity tiers to improve cache hit rates in reading hotspot areas.
+- Shortens I/O interruption when updating storage service configuration during host maintenance or performing cluster upgrades, ensuring that I/O fluctuation perceived by virtual machines is less than 1 second in most scenarios.
 
-### Operations and Maintenance Management
+### Operations and management
 
-- Optimizes how host maintenance mode handles VM placement group rule conflicts and provides an option to ignore rules.
-- Adds an alert item for host system partitions becoming read-only. <!-- http://jira.smartx.com/browse/OCTO-1509 -->
-- Reduces unnecessary ports occupied on the management network by services running on hosts.
-- Unifies the container engine on hosts to containerd.<!-- http://jira.smartx.com/browse/TUNA-6974 -->
-- Adds detection and alerts for management IP connectivity of witness nodes in active-active clusters.<!-- http://jira.smartx.com/browse/TUNA-6847 -->
-- Adds collection of monitoring data related to witness node network traffic in active-active clusters.<!-- http://jira.smartx.com/browse/TUNA-7242 -->
-- Supports detecting NTP server connectivity during cluster deployment.<!-- http://jira.smartx.com/browse/TUNA-7242 -->
-- Optimizes the network port status detection interval. CloudTower displays network port status changes within 15 seconds.<!-- http://jira.smartx.com/browse/TUNA-6952 -->
-- Adds new memory error alerts.<!-- http://jira.smartx.com/browse/OCTO-1468 -->
-- Adjusts the trial and subscription license expiration policy for SMTX OS clusters. After a subscription or trial license expires, created resources and enabled functions can still be used normally and I/O is not interrupted, but VMs or other resources cannot be created.
+- Provides an option for host maintenance mode to ignore specified VM placement group rules and avoid rule conflicts.
+- Adds alerts for host system partition read-only errors.  <!-- http://jira.smartx.com/browse/OCTO-1509 -->
+- Frees up unnecessary management network ports used by services running on a host.
+- Unifies container engines on a host to `containerd`. <!-- http://jira.smartx.com/browse/TUNA-6974 -->
+- Tests and alerts management IP connectivity issues for witness nodes in active-active clusters.<!-- http://jira.smartx.com/browse/TUNA-6847 -->
+- Collects monitoring data for witness node traﬃc in active-active clusters. <!-- http://jira.smartx.com/browse/TUNA-7242 -->
+- Tests NTP server connectivity during cluster deployment. <!-- http://jira.smartx.com/browse/TUNA-7242 -->
+- Optimizes the port status detection frequency to update the port status display within 15 seconds on CloudTower.<!-- http://jira.smartx.com/browse/TUNA-6952 -->
+- Adds new memory error alerts. <!-- http://jira.smartx.com/browse/OCTO-1468 -->
+- Adjusts the Trial and Subscription license expiration policies for SMTX OS clusters. After expiration, existing resources and enabled features will remain functional, and I/O will be unaﬀected, but new virtual machines or resources cannot be created.
 
-## Fixed Issues
+## Resolved issues
 
 ### Virtualization
 
-- Fixed the issue where, in very rare cases, abnormal initialization of host high availability configuration information might cause the `elf-vm-monitor` service to fail to start.<!-- http://jira.smartx.com/browse/ELF-7178 --> <!-- http://jira.smartx.com/browse/ELF-7181 -->
-- Fixed the issue where, in clusters with Boost mode enabled, double writes might occur after a VM was rebuilt by HA due to a host exception.<!-- http://jira.smartx.com/browse/ELF-7136 --> <!-- https://cs.smartx.com/knowledgebase/detail?id=6003 -->
-- Fixed the issue where, after the SMTX VM Tools ISO was ejected inside the VM operating system, performing live migration might cause the VM to become uneditable while running.<!-- http://jira.smartx.com/browse/ELF-7102 --> <!-- https://cs.smartx.com/knowledgebase/detail?id=5883 -->
-- Fixed the issue where, after VM export failed, temporary files created during the export task might not be reclaimed, causing unexpected storage resource usage.<!-- http://jira.smartx.com/browse/ELF-7084 --> <!-- https://cs.smartx.com/knowledgebase/detail?id=5885 -->
-- Fixed the issue where, after editing VM IP configuration by using SMTX VM Tools, unexpected changes to the VM IP configuration might occur.<!-- http://jira.smartx.com/browse/ELF-7009 --> <!-- https://cs.smartx.com/knowledgebase/detail?id=5817 -->
-- Fixed the issue where, when rolling back a VM from a snapshot, rollback might fail because the UUID of the snapshot did not match that of the virtual volume mounted to the VM at the same path.<!-- http://jira.smartx.com/browse/ELF-6967 -->
-- Fixed the issue where long-term unavailability of cluster storage, for example due to cluster license expiration, might cause abnormal HA behavior.<!-- http://jira.smartx.com/browse/ELF-6950 --> <!-- https://cs.smartx.com/knowledgebase/detail?id=5668 -->
-- Fixed the issue where memory usage of Windows VMs with SMTX VM Tools installed might be incorrectly displayed as 100%.<!-- http://jira.smartx.com/browse/ELF-6935 --> <!-- https://cs.smartx.com/knowledgebase/detail?id=2608 --> <!-- https://cs.smartx.com/knowledgebase/detail?id=4897 -->
-- Fixed the issue where VMs running the RHEL operating system might fail to install SMTX VM Tools because of service conflicts.<!-- http://jira.smartx.com/browse/ELF-6923 --> <!-- https://cs.smartx.com/knowledgebase/detail?id=5593 -->
-- Fixed the issue where average latency data in VM storage resource monitoring was inaccurate.<!-- http://jira.smartx.com/browse/ELF-6905 --> <!-- https://cs.smartx.com/knowledgebase/detail?id=5637 -->
-- Fixed the issue where exporting a VM might fail because the VM name contained special characters.<!-- http://jira.smartx.com/browse/ELF-6886 -->
-- Fixed the issue where, after VM scheduling failed, the abnormal scheduling cache was not cleared within the expected time, which might cause unexpected host memory usage.<!-- http://jira.smartx.com/browse/ELF-6733 --> <!-- https://cs.smartx.com/knowledgebase/detail?id=5125 -->
-- Fixed the issue where disks using the IDE bus in clusters with Boost mode enabled were not protected by disk locks.<!-- http://jira.smartx.com/browse/ELF-6723 -->
-- Fixed the issue where the default network segment of system services might conflict with system networks or VM networks.<!-- http://jira.smartx.com/browse/ELF-6646 -->
-- Fixed the issue where, after VMs running Debian or Ubuntu were initialized by using cloud-init, the VM IP information collected through SMTX VM Tools might be incorrect.<!-- http://jira.smartx.com/browse/ELF-6609 -->
-- Fixed the issue where, during batch VM migration, selecting automatic scheduling to a suitable host might cause some VMs to still be migrated back to the original host.<!-- http://jira.smartx.com/browse/ELF-6545 -->
-- Fixed the issue where VMs using E1000-mode NICs might have a low-probability network interruption.<!-- http://jira.smartx.com/browse/ELF-6451 --> <!-- https://cs.smartx.com/knowledgebase/detail?id=3922 -->
-- Fixed the issue where Windows VMs using disks whose bus type was IDE might crash.<!-- http://jira.smartx.com/browse/ELF-5997 -->
-- Fixed the issue where, under a specific file system partition mount order, creating a file-system-consistent snapshot for a VM might cause the VM to become unresponsive.<!-- http://jira.smartx.com/browse/ELF-5862 --> <!-- https://cs.smartx.com/knowledgebase/detail?id=3155 -->
-- Fixed the issue where restarting or forcibly restarting a VM might cause the ISO mounted to the VM through CD-ROM to fail to eject normally.<!-- http://jira.smartx.com/browse/ELF-2554 -->
-- Fixed the issue where, due to a kernel issue, VM CPU compatibility could not be set to IceLake in Intel x86_64 architecture clusters running the openEuler operating system.<!-- http://jira.smartx.com/browse/SMTXOS-294 -->
+- The `elf-vm-monitor` service might fail to start due to an initialization error in host high availability configuration under rare circumstances. The issue has been resolved in this release. <!-- http://jira.smartx.com/browse/ELF-7178 --> <!-- http://jira.smartx.com/browse/ELF-7181 -->
+- In clusters with Boost mode enabled, double-write issues might occur after a virtual machine was rebuilt via HA due to host failures. The issue has been resolved in this release. <!-- http://jira.smartx.com/browse/ELF-7136 --> <!-- https://cs.smartx.com/knowledgebase/detail?id=6003 -->
+- After ejecting the SMTX VMTools ISO image from the virtual machine operating system and performing a hot migration, the configuration of that virtual machine might not be edited while the virtual machine is in the `Running` state. The issue has been resolved in this release. <!-- http://jira.smartx.com/browse/ELF-7102 --> <!-- https://cs.smartx.com/knowledgebase/detail?id=5883 -->
+- The temporary files from failed virtual machine export tasks were not properly cleaned up, which might lead to unexpected storage usage. The issue has been resolved in this release. <!-- http://jira.smartx.com/browse/ELF-7084 --> <!-- https://cs.smartx.com/knowledgebase/detail?id=5885 -->
+- Editing virtual machine IP configurations via SMTX VMTools might cause unintended IP configuration changes. The issue has been resolved in this release.<!-- http://jira.smartx.com/browse/ELF-7009 --> <!-- https://cs.smartx.com/knowledgebase/detail?id=5817 -->
+- When rolling back a virtual machine using snapshots, the rollback might fail due to a mismatch between the UUID of the snapshot and the virtual volume mounted on the virtual machine with the same path. The issue has been resolved in this release.<!-- http://jira.smartx.com/browse/ELF-6967 -->
+- The extended cluster storage unavailability (e.g., due to expired licenses) could lead to HA abnormalities. The issue has been resolved in this release. <!-- http://jira.smartx.com/browse/ELF-6950 --> <!-- https://cs.smartx.com/knowledgebase/detail?id=5668 -->
+- The memory usage for Windows virtual machines with SMTX VMTools installed might incorrectly display as 100%. The issue has been resolved in this release. <!-- http://jira.smartx.com/browse/ELF-6935 --> <!-- https://cs.smartx.com/knowledgebase/detail?id=2608 --> <!-- https://cs.smartx.com/knowledgebase/detail?id=4897 -->
+- When installing SMTX VMTools on virtual machines with the RHEL operating system, service conflicts might cause the installation to fail. The issue has been resolved in this release. <!-- http://jira.smartx.com/browse/ELF-6923 --> <!-- https://cs.smartx.com/knowledgebase/detail?id=5593 -->
+- The average latency data in virtual machine storage resource monitoring was inaccurate. The issue has been resolved in this release.<!-- http://jira.smartx.com/browse/ELF-6905 --> <!-- https://cs.smartx.com/knowledgebase/detail?id=5637 -->
+- Exporting a virtual machine might fail because the virtual machine name contained special characters. The issue has been resolved in this release. <!-- http://jira.smartx.com/browse/ELF-6886 -->
+- The failed virtual machine scheduling caused unexpected host memory usage due to the delay in clearing failed scheduling caches. The issue has been resolved in this release.<!-- http://jira.smartx.com/browse/ELF-6733 --> <!-- https://cs.smartx.com/knowledgebase/detail?id=5125 -->
+- In clusters with Boost mode enabled, the disks using the IDE bus were not protected by disk lock. The issue has been resolved in this release. <!-- http://jira.smartx.com/browse/ELF-6723 -->
+- There might be conflicts between the default network segment of the system service and system networks or VM networks. The issue has been resolved in this release. <!-- http://jira.smartx.com/browse/ELF-6646 -->
+- After initializing a virtual machine with Debian or Ubuntu operating system with cloud-init, the virtual machine IP acquired via SMTX VMTools might be wrong. The issue has been resolved in this release. <!-- http://jira.smartx.com/browse/ELF-6609 -->
+- When migrating virtual machines in batches, selecting `Automatically place VM on proper host` might result in certain virtual machines being migrated back to their original hosts. The issue has been resolved in this release. <!-- http://jira.smartx.com/browse/ELF-6545 -->
+- Virtual machines with E1000 NICs had a low probability of experiencing network interruptions. The issue has been resolved in this release. <!-- http://jira.smartx.com/browse/ELF-6451 --> <!-- https://cs.smartx.com/knowledgebase/detail?id=3922 -->
+- The disk with the IDE bus type on a Windows virtual machine might cause virtual machine crashes. The issue has been resolved in this release.<!-- http://jira.smartx.com/browse/ELF-5997 -->
+- Creating file-system consistent snapshots under specific file system partition mount orders could cause the virtual machine to become unresponsive. The issue has been resolved in this release.<!-- http://jira.smartx.com/browse/ELF-5862 --> <!-- https://cs.smartx.com/knowledgebase/detail?id=3155 -->
+- Rebooting or forcibly rebooting a virtual machine might prevent its ISO file mounted via CD-ROM from being ejected properly. The issue has been resolved in this release. <!-- http://jira.smartx.com/browse/ELF-2554 -->
+- For clusters running the openEuler operating system with the Intel x86_64 architecture, the virtual machine CPU compatibility could not be set to IceLake due to a kernel issue. The issue has been resolved in this release. <!-- http://jira.smartx.com/browse/SMTXOS-294 -->
 
-### Block Storage
+### Block storage
 
-- Fixed the issue where, in very rare cases, the I/O aggregation service might cause write I/O to fail to return.
-- Fixed the issue where, when `zbs-taskd` could not connect to ZooKeeper due to network reasons, the main thread might be blocked, causing `zbs-taskd` to be unable to provide services.
-- Fixed the issue where the exclusive physical capacity value of consistency snapshot groups was inaccurate.
-- Fixed the issue where creating a snapshot during I/O had an extremely low probability of causing data inconsistency.
-- Fixed the issue where, in iSCSI mode, errors might occur when the `blkdiscard` command and `iSCSI rescan` were executed at the same time.
-- Fixed the issue where sending small packets to the RPC server at specific intervals during vulnerability scanning might cause high I/O latency.
-- Fixed the issue where, after a snapshot was created for a persistent cache volume, the data might not remain in persistent cache.
-- Fixed the issue where, when only some nodes in a cluster reserved cache space for persistent cache volumes, persistent cache volume data could not be balanced normally.
-- Improved long-tail latency caused by high latency on the physical disk to which the cache partition belongs.
-- Fixed the issue where volumes of VM templates might repeatedly migrate data between nodes.
-- Fixed the issue where cluster upgrades from SMTX OS 4.0.x might fail with low probability due to abnormal space calculation.
-- Fixed the issue where, after the initial I/O of a virtual volume continued for 6 hours, one-time performance fluctuation might occur because of localization awareness.
-- Fixed the issue where a small amount of UNMAP I/O generated during cross-cluster live migration was not synchronized to the target side in time.
+- The I/O aggregation service could cause write I/O requests to fail to return in rare cases. The issue has been resolved in this release.
+- When `zbs-taskd` failed to connect to ZooKeeper due to network issues, the main thread could become blocked, rendering `zbs-taskd` unable to provide services. The issue has been resolved in this release.
+- The calculation of exclusive physical capacity for consistency snapshot groups was inaccurate. The issue has been resolved in this release.
+- When creating a snapshot during I/O operations, the data had an extremely low probability to be inconsistent. The issue has been resolved in this release.
+- In iSCSI mode, executing the `blkdiscard` command concurrently with `iSCSI rescan` could lead to errors. The issue has been resolved in this release.
+- Sending small packets to the RPC server at specific intervals during vulnerability scans could cause high I/O latency. The issue has been resolved in this release.
+- After creating a snapshot for a pinned volume, the data might fail to remain pinned in the cache. The issue has been resolved in this release.
+- When only certain nodes in a cluster had reserved cache for pinned volumes, the volume data could not be balanced properly. The issue has been resolved in this release.
+- High latency on the physical disk hosting the cache partition could result in long-tail delays. The issue has been resolved in this release.
+- Data in VM template volumes could migrate repeatedly between nodes. The issue has been resolved in this release.
+- Upgrades from SMTX OS 4.0.x could occasionally fail due to errors in space calculation. The issue has been resolved in this release.
+- After 6 hours of continuous initial I/O activity, virtual volumes could experience a one-time performance fluctuation due to localization awareness. The issue has been resolved in this release.
+- A small amount of UNMAP I/O data generated during virtual machine cross-cluster hot migration was not synchronized to the target cluster timely. The issue has been resolved in this release.
 
-### Network
+### Networking
 
-- Fixed the issue where, after the cluster management IP was modified, a host could not be specified when a VM was powered on. <!-- https://cs.smartx.com/knowledgebase/detail?id=4700 --> <!-- http://jira.smartx.com/browse/ER-878 -->
-- Fixed the issue where, when deploying a cluster or creating a new virtual distributed switch, after multiple physical network ports were associated with a host, the LLDP of the physical NIC and the internal interface communicated externally at the same time, causing frequent MAC address conflict alerts on the physical switch. <!-- https://cs.smartx.com/knowledgebase/detail?id=5186 --> <!-- http://jira.smartx.com/browse/ER-936 -->
-- Fixed the issue where, after an isolated network port recovered, it could not automatically rejoin port bonding. <!-- https://cs.smartx.com/knowledgebase/detail?id=5222 --> <!-- http://jira.smartx.com/browse/ER-942 -->
+- After modifying the cluster management IP addresses, virtual machines failed to be specified a host during the booting process. The issue has been resolved in this release. <!-- https://cs.smartx.com/knowledgebase/detail?id=4700 --> <!-- http://jira.smartx.com/browse/ER-878 -->
+- When deploying a cluster or creating a new virtual distributed switch, multiple physical NICs on the host triggered frequent MAC address conflict alerts on the physical switch, as both the NIC LLDP and the internal interface communicated with the external client simultaneously. The issue has been resolved in this release. <!-- https://cs.smartx.com/knowledgebase/detail?id=5186 --> <!-- http://jira.smartx.com/browse/ER-936 -->
+- After a network port was quarantined and then recovered, it failed to automatically rejoin port bonding. The issue has been resolved in this release. <!-- https://cs.smartx.com/knowledgebase/detail?id=5222 --> <!-- http://jira.smartx.com/browse/ER-942 -->
 
-### Operations and Maintenance Management
+### Operations and management
 
-- Fixed the issue where an advanced monitoring VM might incorrectly trigger that the alert function was unavailable.<!-- http://jira.smartx.com/browse/OCTO-1526 -->
-- Fixed the issue where, after node replacement or node expansion, the IQN parameter was missing from the `zbs-metad` service configuration file.<!-- http://jira.smartx.com/browse/TUNA-7321 -->
-- Fixed the issue where `zbs-chunkd journal` partitions might fail to be identified during cluster upgrade.<!-- http://jira.smartx.com/browse/TUNA-6701 -->
-- Fixed the issue where, because the upgrade tool unexpectedly failed to obtain the actual CPU vendor, uploading upgrade files or distributing upgrade files through the upgrade center failed. <!-- http://jira.smartx.com/browse/TUNA-5434 -->
-- Fixed the issue where duplicate items in the configuration file caused host removal through the command line to fail. <!-- http://jira.smartx.com/browse/TUNA-7407 -->
-- Fixed the issue where the node where `ZooKeeper Leader` was located could not retry role conversion through the command line. <!-- http://jira.smartx.com/browse/TUNA-7092 -->
-- Fixed the issue where data interruption might occur in the host monitoring metric CPU usage. <!-- http://jira.smartx.com/browse/TUNA-7206 -->
-- Fixed the issue where a host entered maintenance mode successfully but the task was displayed as failed. <!-- http://jira.smartx.com/browse/TUNA-6893 -->
-- Fixed the issue where abnormal SNMP requests caused the cluster to frequently trigger the "cluster monitoring and alerting service cannot work normally" alert. <!-- http://jira.smartx.com/browse/OCTO-1497 -->
-- Fixed the issue where updating the SR-IOV configuration of any Solarflare NIC on a node might cause the change to be applied to all other Solarflare NICs. <!-- http://jira.smartx.com/browse/TUNA-7096 -->
-- Fixed the issue where the cluster could not alert normally because the time of advanced monitoring lagged behind the cluster. <!-- http://jira.smartx.com/browse/OCTO-1503 -->
-- Fixed the issue where clusters upgraded from 3.0.11 and earlier could not display the failfast flag in RAID details.
-- Fixed the issue where cluster upgrade failed after a cluster that had not enabled the active-active feature was converted to an active-active cluster, or after the witness node was rebuilt in an active-active cluster.
+- The advanced monitoring virtual machine might mistakenly trigger "The alert-sending function is in an abnormal state" alert. The issue has been resolved in this release. <!-- http://jira.smartx.com/browse/OCTO-1526 -->
+- After replacing or scaling a node, the `zbs-metad` service configuration file lacked the IQN parameter. The issue has been resolved in this release. <!-- http://jira.smartx.com/browse/TUNA-7321 -->
+- The `zbs-chunkd` journal partition might fail to be identified during a cluster upgrade. The issue has been resolved in this release. <!-- http://jira.smartx.com/browse/TUNA-6701 -->
+- The upgrade tool unexpectedly failed to retrieve the actual CPU vendor, causing failures in uploading upgrade files or distributing them via the upgrade center. The issue has been resolved in this release.  <!-- http://jira.smartx.com/browse/TUNA-5434 -->
+- Duplicate entries in the configuration file caused failures in removing a host via commands. The issue has been resolved in this release.  <!-- http://jira.smartx.com/browse/TUNA-7407 -->
+- The node where `ZooKeeper Leader` resides could not retry role conversion via commands. The issue has been resolved in this release.  <!-- http://jira.smartx.com/browse/TUNA-7092 -->
+- The host CPU usage monitoring metric might experience data outage. The issue has been resolved in this release.  <!-- http://jira.smartx.com/browse/TUNA-7206 -->
+- A host could successfully enter maintenance mode but the task was displayed as failed. The issue has been resolved in this release.  <!-- http://jira.smartx.com/browse/TUNA-6893 -->
+- Abnormal SNMP requests caused the cluster to frequently trigger "Cluster alerting services do not work" alert. The issue has been resolved in this release.  <!-- http://jira.smartx.com/browse/OCTO-1497 -->
+- Updating the SR-IOV configuration of any Solarflare NIC on a node might mistakenly apply the changes to all remaining Solarflare NICs on that node. The issue has been resolved in this release.  <!-- http://jira.smartx.com/browse/TUNA-7096 -->
+- The cluster could not generate alerts properly because the advanced monitoring time lagged behind the cluster time. The issue has been resolved in this release.  <!-- http://jira.smartx.com/browse/OCTO-1503 -->
+- Clusters upgraded from version 3.0.11 or earlier could not display the failfast flag in RAID details. The issue has been resolved in this release.
+- After enabling the active-active feature for a cluster, or rebuilding the witness node in an active-active cluster, the cluster upgrade failed. The issue has been resolved in this release.
 
 ### Kernel
 
-- Fixed the issue where CPU usage surged when the PTP feature was enabled for QLogic NICs. <!-- http://jira.smartx.com/browse/SMTXOS-284 -->
-- Fixed the issue where Guest OS clock synchronization was abnormal in CPU hot-add scenarios. <!-- http://jira.smartx.com/browse/SMTXOS-222 -->
-- Fixed security vulnerability CVE-2019-3016. <!-- http://jira.smartx.com/browse/SMTXOS-300 -->
-- Fixed the issue where PCIe devices that supported only 32-bit MSI could not work. <!-- http://jira.smartx.com/browse/SMTXOS-306 -->
-- Fixed Hygon CPU defect errata 1096. <!-- http://jira.smartx.com/browse/SMTXOS-312 -->
-- Fixed the issue where data inconsistency caused block-layer I/O to hang. <!-- http://jira.smartx.com/browse/SMTXOS-316 -->
-- Fixed the issue where online capacity reset of the ext4 file system might damage data. <!-- http://jira.smartx.com/browse/SMTXOS-317 -->
-- Fixed the issue where the memory subsystem might be damaged. <!-- http://jira.smartx.com/browse/SMTXOS-318 -->
-- Fixed the issue where buffer I/O data might be inconsistent. <!-- http://jira.smartx.com/browse/SMTXOS-319 -->
-- Fixed the issue where a KVM asynchronous page fault exception caused a hang. <!-- http://jira.smartx.com/browse/SMTXOS-320 -->
-- Fixed the issue where a hang might occur in the memory allocation path. <!-- http://jira.smartx.com/browse/SMTXOS-321 -->
-- Fixed the issue where passing through NVIDIA A-series GPUs to Windows VMs caused the host to crash and restart. <!-- http://jira.smartx.com/browse/SMTXOS-323 -->
-- Fixed a bug in VM page fault exception handling under Boost mode on the AArch64 architecture, resolving host crashes caused by the bug.<!-- http://jira.smartx.com/browse/SMTXOS-108 -->
+- Enabling PTP on QLogic NICs caused a sudden spike in CPU usage. The issue has been resolved in this release.  <!-- http://jira.smartx.com/browse/SMTXOS-284 -->
+- The guest operating system clock synchronization failed when hot adding CPUs. The issue has been resolved in this release.  <!-- http://jira.smartx.com/browse/SMTXOS-222 -->
+- The system had a security vulnerability CVE-2019-3016. The issue has been resolved in this release.  <!-- http://jira.smartx.com/browse/SMTXOS-300 -->
+- PCIe devices that only supported 32-bit MSI failed to function. The issue has been resolved in this release.  <!-- http://jira.smartx.com/browse/SMTXOS-306 -->
+- The Hygon CPU had errata 1096. The issue has been resolved in this release.  <!-- http://jira.smartx.com/browse/SMTXOS-312 -->
+- Data inconsistency caused block layer I/O deadlock. The issue has been resolved in this release.  <!-- http://jira.smartx.com/browse/SMTXOS-316 -->
+- Resetting the capacity of the ext4 file system online might result in data corruption. The issue has been resolved in this release.  <!-- http://jira.smartx.com/browse/SMTXOS-317 -->
+- A potential issue might cause memory subsystem corruption. The issue has been resolved in this release.  <!-- http://jira.smartx.com/browse/SMTXOS-318 -->
+- The buﬀer I/O data might be inconsistent. The issue has been resolved in this release.  <!-- http://jira.smartx.com/browse/SMTXOS-319 -->
+- The KVM asynchronous page fault caused system deadlock. The issue has been resolved in this release.  <!-- http://jira.smartx.com/browse/SMTXOS-320 -->
+- A deadlock could occur in the memory allocation path. The issue has been resolved in this release.  <!-- http://jira.smartx.com/browse/SMTXOS-321 -->
+- Passing through NVIDIA A-series GPUs to Windows virtual machines caused the host to crash and reboot. The issue has been resolved in this release.  <!-- http://jira.smartx.com/browse/SMTXOS-323 -->
+- For clusters with the AArch64 architecture, if Boost mode was enabled, the bugs in handling virtual machine page fault would cause the host to crash. The issue has been resolved in this release. <!-- http://jira.smartx.com/browse/SMTXOS-108 -->
