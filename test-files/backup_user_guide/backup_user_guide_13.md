@@ -1,12 +1,13 @@
 ---
 hide_title: true
-sidebar_label: Pause or Resume a Backup Plan
-title: Pause or Resume a Backup Plan
+sidebar_label: Suspending or resuming a backup plan
+title: Suspending or resuming a backup plan
 id: backup_user_guide_13
 ---
 
-# Pause or Resume a Backup Plan
+# Suspending or resuming a backup plan
 
-By default, created backup plans run automatically according to the configured backup schedule. You can also pause a backup plan to temporarily disable the current backup cycle. A paused backup plan will no longer run automatically.
+A created backup plan runs automatically according to the specified backup schedule by default. You can also suspend the backup plan to temporarily disable the backup schedule. Once suspended, the backup plan will not be automatically executed.
 
-In the **Backup Plan** list, select the backup plan you want to pause or resume. Then, click **...** on the right side of the list or on the backup plan details page, and choose **Pause Backup Plan** or **Resume Backup Plan** to pause or resume the backup plan.
+In the left sidebar of the **Backup & DR** page in CloudTower, select **Backup plan**. In the list, select the target backup plan to suspend or resume. Click **...** in the list or its details page and select **Suspend backup plan** or **Resume backup plan** accordingly.
+

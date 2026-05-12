@@ -1,57 +1,57 @@
 ---
 hide_title: true
-sidebar_label: Set Basic Information
-title: Set Basic Information
+sidebar_label: Configuring the basic information
+title: Configuring the basic information
 id: backup_user_guide_21
 ---
 
-# Set Basic Information
+# Configuring the basic information
 
 1. Enter the name and description of the backup plan.
-2. Set the backup service and backup repository used by the backup plan, and choose whether to enable file system consistency and compression.
+
+2. Select a backup service as well as a backup repository for the backup plan and choose whether to enable file-system consistency and compression accordingly.
 
    <table>
-    <tr>
-      <th>Configuration Item</th>
+    <tbody><tr>
+      <th>Parameter</th>
       <th>Description</th>
     </tr>
     <tr>
-      <td>Backup Service</td>
-      <td>Select a backup service. It is recommended to choose a backup service in the same data center as the VM to be backed up.</td>
+      <td>Backup service</td>
+      <td>Select a backup service. It is recommended to select a backup service located in the same data center as the virtual machines to be backed up.</td>
     </tr>
     <tr>
-      <td>Backup Repository</td>
-      <td>Select a backup repository. You can select only a backup repository associated with the backup service.</td>
+      <td>Backup repository</td>
+      <td>Select a backup repository. Only backup repositories associated with the backup service can be selected.</td>
     </tr>
     <tr>
-      <td>File System Consistency</td>
-      <td><p>Enabled by default. For running VMs with VM tools installed, the file system is quiesced or frozen to ensure that all disk I/O has completed when the snapshot is captured and that the data is in a recoverable, consistent state, thereby enabling file system-consistent backups; other VMs will be backed up with crash consistency, and the snapshot will not include in-memory data from the VM file system. After this is disabled, all VMs will be backed up with crash consistency, and the related snapshots will not include in-memory data from the VM file system.</p>
-      <p><strong>Note</strong>: The VM will be temporarily unavailable while a file system-consistent snapshot is being created.</p>
+      <td>File-system consistency</td>
+      <td><p>Enabled by default. For virtual machines with VMTools installed and running, a quiesced or frozen file system is used to ensure that all disk I/O operations are completed and the data is in a restorable and consistent state during snapshot capture, thereby achieving a file-system consistent backup. For other virtual machines, crash-consistent backups are performed, and file system memory data is not included in snapshots. When disabled, all virtual machines will perform crash-consistent backups, and related snapshots will not include memory data of the virtual machine file system. </p>
+      <p><strong>Note</strong>: The virtual machine will be temporarily unavailable while creating a file system consistency snapshot. </p>
       </td>
     </tr>
     <tr>
       <td>Compression</td>
-      <td>Choose whether to enable backup data compression, which is enabled by default. After the VM's virtual volume data is transferred to the backup repository, it is compressed first and then stored as a backup file.</td>
+      <td>Choose whether to enable backup data compression, which is enabled by default. The virtual volume data transferred to the backup repository will be compressed before being stored as backup files. </td>
     </tr>
-   </table>
+   </tbody></table>
 
-3. Select the VMs to include in the backup plan; you can select one or more VMs. VMs can be filtered by VM name, cluster name, tag name, and tag value.
+3. Select one or more virtual machines for the backup plan. You can filter virtual machines by name, cluster name, label name, or label value.
 
-    >**Note**:
-    >
-    >-  The following VMs cannot be backed up:
-    >     - VMs with shared virtual volumes mounted.
-    >     - VMs with no virtual volumes mounted.
-    >     - VMs running system services, such as Everoute Controller VMs, CloudTower VMs, backup service VMs, replication service VMs, observability VMs, advanced monitoring VMs, security protection VMs (SVM), and so on.
-    >     - SKS workload cluster node VMs.
-    >     - Container image registry VMs.
-    >     - VMs in the `Operation in Progress` or `Unknown` state.
-    >     - VMs whose cluster has an abnormal connection to CloudTower.
-    >     - VMs whose cluster uses a trial license and the license has expired.
-    >     - Test VMs and replica VMs created by the replication service.
-    >- For VMs already added to the backup plan, when performing cross-cluster cold migration and staged migration without retaining the source VM:
-    >
-    >   -  If the target cluster of the migration is associated with the current backup service, the backup plan will continue to protect the VM;
-    >   - If the target cluster of the migration is not associated with the current backup service, the VM will be removed from this backup plan after migration;
-    >   - For VMs migrated by cold migration or staged migration to a 5.x.x cluster lower than 5.1.3 or to a 6.0.x cluster, they will be removed from the backup plan after migration is complete.
-    >- For VMs already added to the backup plan, if cross-cluster cold migration or staged migration is performed while retaining the source VM, the source VM will continue to be protected instead of the migrated VM.
+   > **Information**:
+   >
+   > - The following virtual machines are not supported for backup:
+   >   - Virtual machines with shared virtual volumes mounted.
+   >   - Virtual machines with no virtual volumes mounted.
+   >   - Virtual machines that run system services, such as Everoute Controller virtual machines, CloudTower virtual machines, backup service virtual machines, replication service virtual machines, observability virtual machines, advanced monitoring virtual machines, and security virtual machines (SVM).
+   >   - Virtual machines that serve as SKS workload cluster nodes.
+   >   - Container registry virtual machines.
+   >   - Virtual machines in the `Updating` or `Unknown` state.
+   >   - Virtual machines in a cluster disconnected from CloudTower.
+   >   - Virtual machines in a cluster with an expired Trial license.
+   >   - Test virtual machines and replica virtual machines created by the replication service.
+   > - For virtual machines included in a backup plan, when a cross-cluster cold migration or staged migration is performed without retaining the source virtual machine:
+   >   - If the target cluster of the migration is associated with the current backup service, the backup plan will continue to protect the migrated virtual machine.
+   >   - If the target cluster of the migration is not associated with the current backup service, the migrated virtual machine will be removed from the backup plan after migration.
+   >   - For virtual machines migrated through cold migration or staged migration to clusters running SMTX OS (ELF) 5.x.x earlier than version 5.1.3 or to clusters running SMTX OS (ELF) 6.0.x, they will be removed from the backup plan after migration.
+   > - For virtual machines included in a backup plan, if a cross-cluster cold migration or staged migration is performed with the source virtual machine retained, the backup plan will continue to protect the source virtual machine rather than the migrated virtual machine.

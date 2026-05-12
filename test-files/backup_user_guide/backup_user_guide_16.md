@@ -1,17 +1,17 @@
 ---
 hide_title: true
-sidebar_label: Delete Backup Plan
-title: Delete Backup Plan
+sidebar_label: Deleting a backup plan
+title: Deleting a backup plan
 id: backup_user_guide_16
 ---
 
-# Delete Backup Plan
+# Deleting a backup plan
 
-1. In the **Backup Plans** list, select the backup plan you want to delete. On the right side of the list or on the backup plan details page, click **...** and select **Delete**.
+1. In the left sidebar of the **Backup & DR** page in CloudTower, select **Backup plan**. In the list, select the target backup plan to delete. Click **...** on the right side of the list or its details page and select **Delete**.
 
-2. In the pop-up **Delete Backup Plan** dialog, choose whether to delete the recovery points for all virtual machines in the backup plan at the same time.
+2. In the pop-up **Delete backup plan** dialog box, choose whether to delete the restore points of all virtual machines in the backup plan when you delete the backup plan.
 
-    - If the recovery points to be deleted currently have related backup or recovery tasks, you cannot select **Delete recovery points**.
-    - If you choose **Keep recovery points**, the backup files corresponding to the retained recovery points will continue to be stored in the backup repository.
+   - If the restore points to be deleted are associated with backup or restore jobs in progress, selecting **Remove restore points** is not allowed.
+   - If you choose to **Keep restore points**, the corresponding backup files will continue to be stored in the backup repository.
 
 3. Click **Delete**.

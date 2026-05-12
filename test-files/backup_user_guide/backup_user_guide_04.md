@@ -1,21 +1,22 @@
 ---
 hide_title: true
-sidebar_label: Planning License Unit Allocation
-title: Planning License Unit Allocation
+sidebar_label: Planning license unit allocation
+title: Planning license unit allocation
 id: backup_user_guide_04
 ---
-# Planning License Unit Allocation
 
-The software license for SMTX Backup and Disaster Recovery is shared by the Backup and Replication function modules. License units are consumed according to the type of protected object and the features used, as follows:
+# Planning license unit allocation
 
-- **SMTX OS (ELF) cluster virtual machines**
+The software license for SMTX Backup & Disaster Recovery is shared by the backup service and the replication service. License units are consumed based on the type of protected object and the function used, as follows:
 
-  - Backup: 1 license unit is consumed for each virtual machine backed up.
+- **Virtual machines in SMTX OS (ELF) clusters**
 
-  - Asynchronous replication: 2 license units are consumed for each virtual machine asynchronously replicated.
+  - Backup: Backing up one virtual machine consumes 1 license unit.
 
-  - Synchronous replication: 4 license units are consumed for each virtual machine synchronously replicated.
+  - Asynchronous replication: Asynchronously replicating one virtual machine consumes 2 license units.
 
-- **SMTX ZBS block storage cluster volumes**: 2 license units are consumed for each 1 TiB volume asynchronously replicated.
+  - Synchronous replication: Synchronously replicating one virtual machine consumes 4 license units.
 
-Please plan the allocation of license units in advance based on your actual business requirements, taking into account the function modules you need to use, the number of virtual machines and volumes to be protected, and future business expansion.
+- **Volumes in SMTX ZBS block storage clusters**: Asynchronously replicating 1 TiB of storage volume consumes 2 license units.
+
+Therefore, you need to plan the allocation of license units in advance based on actual business needs by considering the required services, the number of virtual machines and volumes to be protected, and the potential business expansion.

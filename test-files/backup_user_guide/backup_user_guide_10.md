@@ -1,16 +1,17 @@
 ---
 hide_title: true
-sidebar_label: Delete Backup Repository
-title: Delete Backup Repository
+sidebar_label: Deleting a backup repository
+title: Deleting a backup repository
 id: backup_user_guide_10
 ---
 
-# Delete Backup Repository
+# Deleting a backup repository
 
 A backup repository can be deleted when it is not associated with any backup plan.
 
 **Procedure**
 
-1. In the **Backup Repository** list, select the backup repository to be deleted, click **...**, and choose **Delete**; or click the backup repository to be deleted to open the backup repository details panel, then choose **Delete**.
+1. In the left sidebar of the **Backup & DR** page in CloudTower, select **Backup repository** and then the target backup repository in the list. Click **...** and choose **Delete**. Alternatively, click the target backup repository to enter its details panel, and then click **Delete**.
 
-2. In the pop-up **Delete Backup Repository** dialog, click **Delete**.
+2. Click **Delete** in the pop-up **Delete backup repository** dialog box.
+

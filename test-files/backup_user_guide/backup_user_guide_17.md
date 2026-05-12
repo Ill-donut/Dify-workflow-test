@@ -1,83 +1,84 @@
 ---
 hide_title: true
-sidebar_label: Restore a Virtual Machine from a Recovery Point
-title: Restore a Virtual Machine from a Recovery Point
+sidebar_label: Restoring a virtual machine from a restore point
+title: Restoring a virtual machine from a restore point
 id: backup_user_guide_17
 ---
 
-# Restore a Virtual Machine from a Recovery Point
+# Restoring a virtual machine from a restore point
 
-Each time a backup plan is executed, a recovery point is created for each virtual machine included in the backup plan. You can restore a virtual machine from a recovery point.
+Each time a backup plan is executed, a restore point is created for each virtual machine in the backup plan. You can restore a virtual machine from its restore point.
 
-Virtual machines support two recovery methods: in-place recovery and recreate virtual machine.
+Virtual machines can be restored either by restoring the virtual machine in place or rebuilding the virtual machine.
 
-- **In-place recovery**
+- **Restore the virtual machine in place**
 
-  In-place recovery means restoring the original virtual volume data to the same state as when the recovery point was created, without changing the original virtual machine's configuration information. In-place recovery overwrites the original virtual machine, so use it with caution.
+  Refers to restoring the virtual volume data of the source virtual machine to the state when the restore point was created without changing the configuration of the source virtual machine. Note that the restored virtual machine will replace the source virtual machine. Proceed with caution.
 
-  >**Note**:
+  > **Note**:
   >
-  >In the following scenarios, in-place recovery is unavailable:
-  >- The original virtual machine is in the `Paused`, `Operating`, or `Unknown` state;
-  >- The original virtual machine has been deleted, moved to the recycle bin, migrated to another cluster, or converted to a virtual machine template;
-  >- After the recovery point was created, the original virtual machine added, deleted, or expanded any virtual volumes;
-  >- The cluster where the original virtual machine resides has been removed from CloudTower.
+  > In any of the following scenarios, you cannot restore the virtual machine in place:
+  >
+  > - The source virtual machine is in the `Suspended`, `Updating`, or `Unknown` state.
+  > - The source virtual machine has been deleted, moved to the recycle bin, migrated to another cluster, or converted into a virtual machine template.
+  > - The source virtual machine has added, removed, or expanded its virtual volumes after the restore point was generated.
+  > - The cluster in which the source virtual machine resides has been removed from CloudTower.
 
-- **Recreate virtual machine**
+- **Rebuild the virtual machine**
 
-  Recreate virtual machine means creating a new virtual machine from the recovery point, while keeping the original virtual machine. The configuration information and virtual volume data of the recreated virtual machine are the same as those of the original virtual machine when the recovery point was created.
+  Refers to creating a new virtual machine using a restore point while retaining the source virtual machine. The configuration and virtual volume data of the rebuilt virtual machine are the same as those of the source virtual machine at the time the restore point was generated.
 
-**Notes**
+**Precaution**
 
-If the license type of the target cluster for recovery is a trial license and the license has expired, virtual machine recovery fails.
+When restoring a virtual machine, if the target cluster uses an expired Trial license, the restoration will fail.
 
 **Procedure**
 
-1. Log in to **CloudTower**. On the **Backup and Disaster Recovery** page, click **Backup Plans**, select a backup plan, and click the backup plan name to enter the backup plan details page.
+1. In the left sidebar of the **Backup & DR** page in CloudTower, click **Backup plan**. Select a backup plan and click its name to enter the details page.
 
-2. Select the virtual machine to be restored, click the virtual machine name, and choose a recovery point by time point.
+2. Select the virtual machine to restore. Click its name to choose a restore point based on the backup time.
 
-3. Click **Restore**. In the **Restore Virtual Machine** dialog box, select a recovery mode and enter configuration information as needed.
+3. Click **Restore**. In the pop-up **Restore virtual machine** dialog box, select the restore mode and enter configuration information as needed.
 
-     - **In-place recovery**
+   - **Restore VM in place**
 
-       Restore the original virtual volume data to the same state as when the recovery point was created. In-place recovery does not change the virtual machine's configuration information.
+     Restores the virtual volume data of the source virtual machine to the state when the restore point was created without changing the configuration of the source virtual machine.
 
-       >**Description**:
+     > **Information**:
+     >
+     > If the virtual machine you want to restore in place is in the `running` state, it will be shut down before the restoration.
+
+   - **Rebuild VM**
+
+     Creates a new virtual machine using a restore point while retaining the source virtual machine. The configuration and virtual volume data of the rebuilt virtual machine are the same as those of the source virtual machine at the time the restore point was generated.
+
+     - **Configure the basic information for the rebuilt virtual machine**
+
+       | Parameter | Description                                                                                                                                                                                                                                                                              |
+       | -------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+       | Target cluster             | Select the target cluster to rebuild the virtual machine. You can select a SMTX OS (ELF) cluster with the same CPU architecture as the cluster of the source virtual machine.                                                         |
+       | Target host                | Select the target host to rebuild the virtual machine. You can choose a specific host in the target cluster. The default is **Automatically place VM on proper host**.                                                                   |
+       | New VM name                | Enter a name for the rebuilt virtual machine. Make sure that its name is different from other virtual machines in the target cluster. The default is the name of the source virtual machine at the time the restore point was generated. |
+
+       > **Information**:
        >
-       >During in-place recovery, if the virtual machine is running, it will be shut down first.
+       > If you select another cluster to create the virtual machine other than the cluster of the source virtual machine, ensure that the storage network of the backup service is connected to the storage network of the target cluster.
 
-     - **Recreate virtual machine**
+     - **Configure the storage policy for the rebuilt virtual machine**
 
-       Create a new virtual machine from the recovery point. The virtual machine's configuration information and virtual volume data are the same as those of the original virtual machine when the recovery point was created.
+       Select a storage policy for the rebuilt virtual machine. You can choose to keep it the same as the source virtual machine or customize a new storage policy.
 
-       - **Set basic information for the recreated virtual machine**
+       > **Information**:
+       >
+       > If the source virtual machine uses an erasure coding storage policy but the target cluster does not meet the prerequisite for erasure coding, the rebuilt virtual machine will not be able to use the same storage policy as the source virtual machine. In this case, you need to customize a storage policy for the rebuilt virtual machine.
 
-         |Configuration item | Description |
-         | ------ | --- |
-         | Target cluster | Select the target cluster for the recreated virtual machine. You can select an SMTX OS (ELF) cluster with the same CPU architecture type. |
-         | Target host | Select the target host for the recreated virtual machine. You can choose a specific host in the target cluster. The default is **Automatically schedule to a suitable host**.|
-         | Recreated virtual machine name | Enter the name of the recreated virtual machine. Make sure it is different from the name of any existing virtual machine in the target cluster. The default is the name of the virtual machine when the recovery point was created. |
+     - **Configure the network mapping**
 
-         >**Description**:
-         >
-         >If the target cluster selected for the recreated virtual machine is not the same cluster as the original virtual machine, make sure the storage network of the backup service can communicate with the storage network of the target cluster.
+       When rebuilding a virtual machine, to ensure service continuity, you need to configure a VM network mapping for the rebuilt virtual machine.
 
-       - **Set the storage policy for the recreated virtual machine**
+       - If the target cluster is associated with a VPC network, the mapped network can be set to either VPC or VLAN.
+       - If the target cluster does not support the VPC feature or is not associated with a VPC network, the mapped network can only be set to VLAN. In this case, if the source uses a VLAN network, it is recommended to select the same type (Access or Trunk) of VLAN network for the rebuilt virtual machine.
 
-          Select the storage policy for the recreated virtual machine. You can keep it the same as the original virtual machine, or customize a new storage policy.
+4. Choose whether to enable **Automatic start after restore**. This option is enabled by default.
 
-          >**Description**:
-          >
-          >If the original virtual machine uses an erasure coding storage policy, but the target cluster does not meet the prerequisites for erasure coding, the storage policy for the recreated virtual machine cannot be set to remain the same as the original virtual machine. In this case, customize a storage policy for the recreated virtual machine.
-
-       - **Set network mapping**
-
-         When recreating a virtual machine, to ensure services continue running normally, you must configure virtual machine network mapping for the recreated virtual machine.
-
-         - If the target cluster is already associated with a VPC network, the mapped network type can be VPC or VLAN.
-         - If the target cluster does not support the VPC feature or is not associated with a VPC network, the mapped network type can only be VLAN. In this case, it is recommended to choose a virtual machine network of the same source-side VLAN type (Access or Trunk).
-
-4. Choose whether to **Automatically power on after recovery**. This is enabled by default.
-
-5. Click **Restore** to submit the virtual machine recovery task. After the task is created, you can stop the recovery task in the task center.
+5. Click **Restore** to start the restore job. If needed, you can stop the restore job in the CloudTower task center.

@@ -1,29 +1,29 @@
 ---
 hide_title: true
-sidebar_label: Add Associated Cluster
-title: Add Associated Cluster
+sidebar_label: Associating clusters
+title: Associating clusters
 id: backup_user_guide_05
 ---
 
-# Add Associated Cluster
+# Associating clusters
 
-After the backup service is deployed, associate the backup service with the SMTX OS (ELF) cluster where the virtual machines to be protected are located.
+After deploying a backup service, you need to associate it with the SMTX OS (ELF) clusters hosting the virtual machines to be protected.
 
 - One backup service can be associated with multiple SMTX OS (ELF) clusters, and one SMTX OS (ELF) cluster can also be associated with multiple backup services.
-- A backup service can only be associated with clusters whose connection status with CloudTower is `Connected`.
+- The backup service can only be associated with clusters whose connection status with CloudTower is `Connected`.
 
 **Procedure**
 
-1. Log in to CloudTower, and in the **Backup and Disaster Recovery** page, click **Settings**.
-2. In the pop-up window, select a deployed backup service, and click **SMTX OS Cluster Association**.
-3. Click **Edit Cluster Association**. In the operation window that appears, add one or more SMTX OS (ELF) clusters.
-4. Click **Save** to complete the association between the backup service and the clusters.
+1. In the left sidebar of the **Backup & DR** page in CloudTower, click **Settings**.
+2. In the pop-up dialog box, select a deployed backup service and click **Associated cluster**.
+3. Click **Edit association**. In the pop-up dialog box, add one or more SMTX OS (ELF) clusters.
+4. Click **Save** to complete the association between the backup service and the cluster.
 
-After the association is complete, you can view the list of clusters associated with the backup service on the **SMTX OS Cluster Association** page.
+After association, you can view the list of clusters associated with the backup service on the **Associated cluster** dialog box.
 
-| Parameter | Description |
-| --- | --- |
-| Cluster Name | The name of the cluster associated with the backup service. |
-| Connection Status with CloudTower | The connection status between the cluster and CloudTower. |
-| Cluster IP | The IP address used when the cluster is associated with CloudTower. |
-| Data Center | The data center to which the cluster belongs in CloudTower. |
+| **Parameter**              | **Description**                                                                   |
+| -------------------------- | --------------------------------------------------------------------------------- |
+| Cluster name               | The name of the cluster associated with the backup service. |
+| Connection with CloudTower | The connection status between the cluster and CloudTower. |
+| Cluster IP                 | The IP address used when associating the cluster with CloudTower. |
+| Data center                | The data center to which the cluster belongs in CloudTower. |

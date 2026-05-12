@@ -1,18 +1,20 @@
 ---
 hide_title: true
-sidebar_label: Edit Backup Repository
-title: Edit Backup Repository
+sidebar_label: Editing a backup repository
+title: Editing a backup repository
 id: backup_user_guide_09
 ---
 
-# Edit Backup Repository
+# Editing a backup repository
 
-After a backup repository is created, the backup service connects to it and performs initialization configuration. If initialization fails, you can modify the backup repository name, description, backup repository type, server address, and folder path, but you cannot modify the associated backup service. After the changes are saved, the backup repository will attempt to reconnect. In other states, the backup repository only supports modifying the name and description; it does not support modifying the associated backup service, backup repository type, server address, or folder path.
+Once a backup repository is created, the backup service will connect to it and perform the initial configuration. If the initialization fails, you can modify the name, description, type, server address, and folder path of the backup repository, while the associated backup service cannot be modified. Once done, the backup service will try to reconnect to the backup repository. In other circumstances, only the name and description of the backup repository can be modified. The associated backup service, backup repository type, server address, and folder path cannot be modified.
 
 **Procedure**
 
-1. In the **Backup Repository** list, select a backup repository, click **...**, and choose **Edit**; or click a backup repository to open the backup repository details panel, then choose **Edit**.
+1. In the left sidebar of the **Backup & DR** page in CloudTower, select **Backup repository** and then the target backup repository in the list. Click **...** and choose **Edit**. Alternatively, click the target backup repository to enter its details panel and click **Edit**.
 
-2. Edit the relevant information in the **Edit Backup Repository** dialog.
+2. Edit the relevant information in the pop-up **Edit backup repository** dialog box.
 
 3. Click **Save**.
+
+

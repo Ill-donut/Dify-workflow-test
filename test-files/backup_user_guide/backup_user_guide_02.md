@@ -1,32 +1,32 @@
 ---
 hide_title: true
-sidebar_label: Backup Plan Planning
-title: Backup Plan Planning
+sidebar_label: Planning backup plans
+title: Planning backup plans
 id: backup_user_guide_02
 ---
 
-# Backup Plan Planning
+# Planning backup plans
 
-The backup service uses backup plans to manage backup policies. A backup plan defines the backup service, backup objects, backup repository, backup cycle, and recovery point retention policy. Before creating a backup plan, plan it from the following aspects:
+Backup services use backup plans to manage backup policies. A backup plan defines backup services, backup objects, backup repositories, backup schedules, and restore point retention policies. Before creating a backup plan, you need to consider the following aspects:
 
-- **Backup objects**
+- **Backup object**
 
-  Each backup plan can include one or more virtual machines that share the same backup policy. Therefore, it is recommended to classify virtual machines according to different data protection requirements, and place virtual machines with the same backup cycle, backup window, and retention policy in the same backup plan. This avoids repeatedly defining the same backup policy and improves operations and management efficiency.
+  Each backup plan can include one or more virtual machines that share the same backup policy. Therefore, it is recommended to categorize virtual machines based on different data protection requirements and group virtual machines that share the same backup schedule, backup window, and retention policy into the same backup plan. This avoids redundant configurations and improves operation and management efficiency.
 
 - **Backup type**
 
-  Backup types include full backup and incremental backup, and a full backup is performed for the first backup. You can combine full backup and incremental backup to create the backup policy that best meets actual requirements.
+  Backup types include full backup and incremental backup. A full backup will be performed during the initial backup. You can combine full backup and incremental backup to create a backup policy that best meets your actual needs.
 
-    - Full backup: Makes a complete copy of all data on the virtual machine at the time the backup is performed.
+  - Full backup: Makes a full copy of all data of the virtual machine when the backup is performed.
 
-    - Incremental backup: Backs up all changed data based on the previous backup (full backup or incremental backup).
+  - Incremental backup: Backs up all data that has changed since the last backup, whether it was a full or incremental backup.
 
-- **Backup cycle**
+- **Backup schedule**
 
-  By setting a backup cycle, the backup service can automatically perform periodic backups of virtual machines. You can correctly set the data backup interval according to the RPO (Recovery Point Objective) target of the business system. The minimum supported RPO for backups is 15 minutes, so you can choose an appropriate backup cycle based on business requirements to ensure timely data backup and recovery capability.
+  By setting a backup schedule, the backup service can automatically perform periodic backups for virtual machines. You can set the appropriate data backup interval based on the RPO (Recovery Point Objective) target of your business system. The minimum RPO supported by the backup is 15 minutes. You can choose an appropriate backup schedule based on your business requirements to ensure timely data backup and recovery capability.
 
-- **Recovery point retention policy**
+- **Restore point retention policy**
 
-  After each backup plan is executed, the backup service creates a recovery point for each virtual machine in the backup plan. The recovery point contains all virtual machine data at the backup time. When needed, you can restore the virtual machine to the state at the backup time through the recovery point.
+  After executing a backup plan, the backup service creates a restore point for each virtual machine in the backup plan. Restore points contain all virtual machine data at the time of backup, which can be used to restore virtual machines to the state at the point in time when needed.
 
-  The recovery point retention policy can define the number of recovery points to retain or a time range. When backup data does not need to be kept for a long time, you can use the recovery point retention policy to control the number of recovery points in the backup repository.
+  The restore point retention policy can be defined to specify the number of restore points to be retained and the time range. When backup data does not need to be retained long-term, you can configure the restore point retention policy to control the number of restore points in the backup repository.

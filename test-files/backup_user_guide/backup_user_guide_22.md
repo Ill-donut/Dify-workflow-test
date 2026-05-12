@@ -1,22 +1,22 @@
 ---
 hide_title: true
-sidebar_label: Set Backup Cycle and Time Window
-title: Set Backup Cycle and Time Window
+sidebar_label: Configuring the backup schedule and backup window
+title: Configuring the backup schedule and backup window
 id: backup_user_guide_22
 ---
 
-# Set Backup Cycle and Time Window
+# Configuring the backup schedule and backup window
 
-Set the cycle for automatic backup plan execution, including setting the backup cycle, specifying the full backup cycle, and setting the backup window.
+Configure the policy for automatic execution of the backup plan, including the backup schedule, full backup schedule, and backup window.
 
-1. **Set Backup Cycle**
+1. **Configure the backup schedule**
 
     <table>
     <thead>
     <tr>
-      <th>Execution Type</th>
-      <th>Default Cycle</th>
-      <th>Supported Cycle Settings</th>
+      <th>Execution type</th>
+      <th>Default value</th>
+      <th>Supported range</th>
       <th>Description</th>
     </tr>
     </thead>
@@ -26,9 +26,9 @@ Set the cycle for automatic backup plan execution, including setting the backup 
       </td>
       <td>15 minutes
       </td>
-      <td>15 ~ 59 minutes
+      <td>15 to 59 minutes
       </td>
-      <td rowspan="2" >The system starts counting from 00:00 every day and executes backup tasks according to the configured time cycle.
+      <td rowspan="2" >The system will start timing at 00:00 each day and perform backup jobs according to the specified schedule.
       </td>
     </tr>
     <tr>
@@ -36,7 +36,7 @@ Set the cycle for automatic backup plan execution, including setting the backup 
       </td>
       <td>1 hour
       </td>
-      <td>1 ~ 23 hours
+      <td>1 to 23 hours
       </td>
     </tr>
     <tr>
@@ -44,9 +44,9 @@ Set the cycle for automatic backup plan execution, including setting the backup 
       </td>
       <td>1 day
       </td>
-      <td>1 ~ 30 days
+      <td>1 to 30 days
       </td>
-      <td>You need to set one or more execution times for the selected day. The minimum interval between two execution times is 15 minutes.
+      <td>Set one or more execution times with a minimum interval of 15 minutes between two execution times. 
       </td>
     </tr>
     <tr>
@@ -54,29 +54,31 @@ Set the cycle for automatic backup plan execution, including setting the backup 
       </td>
       <td>Every Monday
       </td>
-      <td>Monday ~ Sunday
+      <td>Monday to Sunday
       </td>
-      <td>You can choose to execute on one or more days of the week, and need to set one or more execution times for the selected day. The minimum interval between two execution times is 15 minutes.
+      <td>You can choose one or more days of the week for execution. Set one or more execution times for each chosen day. The minimum interval between two execution times is 15 minutes.
       </td>
     </tr>
     </tbody>
     </table>
 
-     >**Note**:
-     >
-     >At the automatic execution time of the backup cycle, if the previous automatic task has not finished, this execution will be skipped.
+   > **Information**:
+   >
+   > If a previous automatic backup job has not been completed by the next scheduled time, the backup service will skip the new automatic execution.
 
-2. **Set Full Backup Cycle**
+2. **Configure the full backup schedule**
 
-    Specify the execution time for full backups among all backup execution times. Unspecified time points will perform incremental backups.
+   Specify full backup execution times from all scheduled backup execution times. Incremental backups will be performed for time points not specified for full backups.
 
-    - When the backup cycle is set to execute by **minute**, **hour**, or **day**, the full backup cycle can be set to execute by **day**, **week**, or **month**. After configuration, within the full backup execution cycle, you need to select one from all backup execution times as the full backup execution time.
-    - When the backup cycle is set to execute by **week**, the full backup can be set to **week** or **month**. After configuration, within the full backup execution cycle, you need to select one from all backup execution times as the full backup execution time.
+   - If the backup schedule is set to run by **minute**, **hour**, or **day**, the full backup schedule can be configured to execute by **day**, **week**, or **month**. Once set, you need to select one of the scheduled backup times within the full backup schedule as the execution time for the full backup.
+   - If the backup schedule is set to run by **week**, the full backup schedule can be configured to execute by **week** or **month**. Once set, you need to select one of the scheduled backup times within the full backup schedule as the execution time for the full backup.
 
-3. **Set Backup Window**
+3. **Configure the backup window**
 
-    Choose whether to enable **Allow backup tasks to run only within the backup window**, which is disabled by default. After enabling:
+   Choose whether to enable **Perform only within window**. The option is disabled by default. Once enabled, consider the following:
 
-    - The interval between the start and end of the backup window must be at least 15 minutes.
-    - The execution time configured in the backup cycle must fall within the time range of the backup window. If the execution time is the same as the backup window end time, the backup task will not be initiated.
-    - Backup tasks that are not completed within the time window will be stopped by default after the backup window ends, and the corresponding virtual machine snapshots and backup files will be deleted. If you do not want to stop such backup tasks, select **If the backup cannot be completed within the time window, continue to complete the current backup**.
+   - The minimum duration for the backup window is 15 minutes.
+
+   - The scheduled execution time must be within the time range of the backup window. If the scheduled backup time coincides with the end time of the backup window, the backup job will not be performed.
+
+   - If a backup job exceeds the backup window, the backup service will automatically stop it and delete the corresponding virtual machine snapshots and backup files. To prevent such backup jobs from being stopped, select **Continue backup until finished even if beyond this window**.

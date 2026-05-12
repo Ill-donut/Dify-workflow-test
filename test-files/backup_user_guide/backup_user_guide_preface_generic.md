@@ -1,13 +1,16 @@
 ---
 hide_title: true
-sidebar_label: About This Document
-title: About This Document
+sidebar_label: About this document
+title: About this document
 id: backup_user_guide_preface_generic
 type: docs
 ---
 
-# About This Document
+# About this document
 
-This document describes how to use the backup service of SMTX Backup and Disaster Recovery to back up and restore virtual machines in an SMTX OS (ELF) cluster.
+This document provides instructions on how to use the backup service of SMTX Backup & Disaster Recovery to back up and restore virtual machines in SMTX OS (ELF) clusters.
 
-Before using the virtual machine backup-related features described in this document, please first refer to [SMTX Backup and Disaster Recovery - Installation and Operations Guide](../backup_dr_installation_guide/backup_dr_installation_guide_01.md) to complete the deployment of the backup service.
+Before using the virtual machine backup features described in this document, refer to [_SMTX Backup & Disaster Recovery - Installation and Operation Guide_](../backup_dr_installation_guide/backup_dr_installation_guide_01.md) to complete the deployment of the backup service.
+
+
+

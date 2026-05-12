@@ -1,24 +1,24 @@
 ---
 hide_title: true
-sidebar_label: Remove Associated Cluster
-title: Remove Associated Cluster
+sidebar_label: Disassociating clusters
+title: Disassociating clusters
 id: backup_user_guide_06
 ---
 
-# Remove Associated Cluster
+# Disassociating clusters
 
-If the backup service needs to be disassociated from a cluster, click **Edit Cluster Association** and perform the corresponding operation in the pop-up window.
+If you need to disassociate a cluster from a backup service, click **Edit association** and perform the corresponding operations in the pop-up dialog box.
 
->**Note**:
+> **Note**:
 >
->If any virtual machines in the cluster have already been added to a backup plan of the backup service, the association between the cluster and the backup service cannot be removed.
+> If a virtual machine in the cluster is added to the backup plan of a backup service, it is not allowed to disassociate the cluster from the backup service.
 
 **Procedure**
 
-1. Log in to CloudTower. In the **Backup and Disaster Recovery** page, click **Settings** to enter the feature management page.
+1. In the left sidebar of the **Backup & DR** page in CloudTower, click **Settings**.
 
-2. Select a deployed backup service and click **SMTX OS Cluster Association**.
+2. In the pop-up dialog box, select a deployed backup service. Click **Associated cluster**.
 
-3. Click **Edit Cluster Association**. In the pop-up window, click the x next to the relevant cluster to remove it.
+3. Click **Edit association**. In the pop-up dialog box, click `×` next to the cluster name to disassociate it.
 
 4. Click **Save**.

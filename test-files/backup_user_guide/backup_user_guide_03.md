@@ -1,12 +1,13 @@
 ---
 hide_title: true
-sidebar_label: Plan Backup Repository Capacity
-title: Plan Backup Repository Capacity
+sidebar_label: Planning the backup repository capacity
+title: Planning the backup repository capacity
 id: backup_user_guide_03
 ---
 
-# Plan Backup Repository Capacity
+# Planning the backup repository capacity
 
 A backup repository is a logical repository used to store virtual machine backup files, such as a NAS server.
 
-Based on information such as the number of virtual machines, allocated logical capacity, current used capacity, and the amount of data that actually changes each day, together with the virtual machine backup cycle and recovery point retention policy, estimate the current capacity status and capacity growth trend, and plan the capacity requirements of the backup repository.
+To plan the capacity required for the backup repository, you need to estimate the current usage and growth trend based on the number of virtual machines, provisioned capacity, used capacity, daily data change rate, combined with the backup schedule and restore point retention policy of virtual machines.
+
