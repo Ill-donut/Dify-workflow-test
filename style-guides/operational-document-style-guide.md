@@ -369,3 +369,277 @@ When referring to a system component in a general or collective sense, use the s
 |---|---|
 | 点击“保存”，完成备份服务与集群的关联。 | Click **Save** to complete the association between the backup service and the cluster. |
 | 备份服务可以关联多个集群。 | The backup service can be associated with multiple clusters. |
+
+---
+
+## Rule 17 — Sidebar Labels: Use Descriptive Content Appropriate for Context
+
+Sidebar labels should use descriptive and contextually appropriate content. While the gerund form and sentence case are required (see Rule 2), the specific words used should accurately reflect the content and be suitable for navigation purposes. Avoid generic or non-descriptive labels when more specific alternatives exist.
+
+**Correct:**
+- Introduction *(for an introductory overview section)*
+- Planning backup plans *(for detailed planning content)*
+- Associating clusters *(for cluster association tasks)*
+
+**Incorrect:**
+- Overview *(if the section is introductory in nature but a more specific label like "Introduction" better reflects the content)*
+
+**Note:** This rule complements Rule 2 (form and case) by addressing word choice and content appropriateness.
+
+---
+
+## Rule 18 — Document Titles: Use Descriptive Content Appropriate for Context
+
+Document titles should use descriptive and contextually appropriate content. While the gerund form and sentence case are required (see Rule 3), the specific words used should accurately reflect the document's content and purpose. Avoid generic or non-descriptive titles when more specific alternatives exist.
+
+**Correct:**
+- Introduction *(for an introductory overview document)*
+- Planning backup plans *(for detailed planning content)*
+- Associating clusters *(for cluster association tasks)*
+
+**Incorrect:**
+- Overview *(if the document is introductory in nature but a more specific title like "Introduction" better reflects the content)*
+
+**Note:** This rule complements Rule 3 (form and case) by addressing word choice and content appropriateness.
+
+---
+
+## Rule 19 — Section Headings: Use Descriptive Content Appropriate for Context
+
+Section headings should use descriptive and contextually appropriate content. While the gerund form and sentence case are required (see Rules 1 and 4), the specific words used should accurately reflect the section's content and purpose. Avoid generic or non-descriptive headings when more specific alternatives exist.
+
+**Correct:**
+- Introduction *(for an introductory overview section)*
+- Planning backup plans *(for detailed planning content)*
+- Associating clusters *(for cluster association tasks)*
+
+**Incorrect:**
+- Overview *(if the section is introductory in nature but a more specific heading like "Introduction" better reflects the content)*
+
+**Note:** This rule complements Rules 1 and 4 (form and case) by addressing word choice and content appropriateness.
+
+---
+
+## Rule 20 — Word Choice: Use Precise and Contextually Appropriate Verbs
+
+Use precise verbs that accurately convey the intended meaning in context. Avoid vague or generic verbs when more specific alternatives better communicate the action or state.
+
+**Correct:**
+- Backup and recovery can be applied in the following scenarios *(more precise than "used")*
+- The backup service of SMTX Backup & Disaster Recovery backs up virtual machines *(clear ownership structure)*
+
+**Incorrect:**
+- Backup and recovery can be used in the following scenarios *(vague — "applied" is more precise in this context)*
+
+**Examples (Chinese source → English translation):**
+
+| Chinese source | English translation |
+|---|---|
+| 备份与恢复可用于以下场景 | Backup and recovery can be applied in the following scenarios |
+
+---
+
+## Rule 21 — Sentence Structure: Use Clear Temporal and Causal Relationships
+
+When describing sequences of events or cause-and-effect relationships, use clear and logical sentence structures that accurately convey the temporal or causal connection.
+
+**Correct:**
+- A full backup will be performed during the initial backup. *(clear temporal relationship)*
+- Backs up all data that has changed since the last backup. *(clear temporal reference)*
+- Makes a full copy of all data of the virtual machine when the backup is performed. *(clear temporal connection)*
+
+**Incorrect:**
+- A full backup is performed for the first backup. *(ambiguous temporal relationship)*
+- Backs up all changed data based on the previous backup. *(unclear reference point)*
+- Makes a complete copy of all data on the virtual machine at the time the backup is performed. *(less precise phrasing)*
+
+**Examples (Chinese source → English translation):**
+
+| Chinese source | English translation |
+|---|---|
+| 首次备份将执行全量备份。 | A full backup will be performed during the initial backup. |
+| 基于上一次备份备份所有更改的数据。 | Backs up all data that has changed since the last backup. |
+| 在备份执行时，对虚拟机上的所有数据进行完整复制。 | Makes a full copy of all data of the virtual machine when the backup is performed. |
+
+---
+
+## Rule 22 — List Item Phrasing: Use Clear and Readable Structures
+
+When phrasing list items that describe categories or groupings, use clear and readable structures that place the key information prominently.
+
+**Correct:**
+- **Virtual machines in SMTX OS (ELF) clusters** *(clear, readable structure)*
+- **Volumes in SMTX ZBS block storage clusters** *(clear, readable structure)*
+
+**Incorrect:**
+- **SMTX OS (ELF) cluster virtual machines** *(ambiguous modifier structure)*
+- **SMTX ZBS block storage cluster volumes** *(ambiguous modifier structure)*
+
+**Examples (Chinese source → English translation):**
+
+| Chinese source | English translation |
+|---|---|
+| SMTX OS (ELF) 集群虚拟机 | **Virtual machines in SMTX OS (ELF) clusters** |
+| SMTX ZBS 块存储集群卷 | **Volumes in SMTX ZBS block storage clusters** |
+
+---
+
+## Rule 23 — Table Content Formatting: Use Consistent Formatting
+
+When including example values or code-like content in tables, use consistent formatting (e.g., quotation marks or plain text) appropriate for the content type.
+
+**Correct:**
+| Field | Description | Example |
+|---|---|---|
+| Name | The name of the backup repository | "nfs_repo" |
+
+**Incorrect:**
+| Field | Description | Example |
+|---|---|---|
+| Name | The name of the backup repository | """nfs_repo""" *(inconsistent triple quotes)* |
+
+---
+
+## Rule 24 — UI Interaction Descriptions: Use Precise Navigation Language
+
+When describing navigation to access a UI element, use precise language that accurately reflects the user's path and action.
+
+**Correct:**
+- Click the row of a backup repository to enter its details panel.
+- Select **Backup repository** in the left sidebar of the **Backup & DR** page.
+
+**Incorrect:**
+- Click a row in a backup repository list to view... *(vague — doesn't specify the result action)*
+
+**Examples (Chinese source → English translation):**
+
+| Chinese source | English translation |
+|---|---|
+| 单击备份仓库列表中的一行以查看... | Click the row of a backup repository to enter its details panel. |
+
+---
+
+## Rule 25 — Sentence Structure: Use Clear Temporal Sequencing
+
+When describing processes or procedures, use clear temporal sequencing to indicate the order of operations.
+
+**Correct:**
+- Once a backup repository is created, the backup service will connect to it and perform the initial configuration.
+
+**Incorrect:**
+- After a backup repository is created, the backup service connects to it and performs initialization configuration. *(less precise temporal relationship)*
+
+**Examples (Chinese source → English translation):**
+
+| Chinese source | English translation |
+|---|---|
+| 备份仓库创建后，备份服务会连接到它并执行初始化配置。 | Once a backup repository is created, the backup service will connect to it and perform the initial configuration. |
+
+---
+
+## Rule 26 — UI Element Labels: Match Exact UI Text Including Case
+
+When referring to UI element labels in text (not as clickable labels), use the exact text as it appears in the UI, including the correct case. This applies to dialog box titles, field names, and other UI text.
+
+**Correct:**
+- Edit the relevant information in the pop-up **Edit backup repository** dialog box.
+- Click **Delete** in the pop-up **Delete backup repository** dialog box.
+
+**Incorrect:**
+- Edit the relevant information in the **Edit Backup Repository** dialog. *(title case — wrong)*
+
+**Note:** This rule extends Rule 6 to cover dialog box titles and other UI text that appears in the interface, ensuring exact case matching.
+
+---
+
+## Rule 27 — Verb Choice for UI Actions: Use Precise Verbs for Selection and Association
+
+Use precise verbs when describing selection and association actions in the UI. "Select" is used for choosing from a list or dropdown; "associate with" is used for establishing connections between components.
+
+**Correct:**
+- Select the backup service to associate with the backup repository.
+- Select the backup repository type and configure the settings.
+
+**Incorrect:**
+- Select the backup service associated with the backup repository. *(ambiguous — implies existing association rather than action)*
+
+**Examples (Chinese source → English translation):**
+
+| Chinese source | English translation |
+|---|---|
+| 选择与备份仓库关联的备份服务。 | Select the backup service to associate with the backup repository. |
+
+---
+
+## Rule 28 — Punctuation: Use Consistent Comma Usage in Lists
+
+When listing items or actions in a series, use consistent comma usage. In a list of two items joined by "and," do not use a comma before "and." In a list of three or more items, use the Oxford comma (comma before "and").
+
+**Correct:**
+- Select the backup repository type and configure the settings. *(no comma before "and" for two items)*
+- Select the backup repository type, configure the settings, and click **Save**. *(Oxford comma for three or more items)*
+
+**Incorrect:**
+- Select the backup repository type, and configure the settings. *(unnecessary comma for two items)*
+
+**Examples (Chinese source → English translation):**
+
+| Chinese source | English translation |
+|---|---|
+| 选择备份仓库类型，并配置相关设置。 | Select the backup repository type and configure the settings. |
+
+---
+
+## Rule 29 — Word Choice: Use Precise Terms for UI Fields
+
+When referring to UI fields, use the exact field label as it appears in the interface. Do not shorten or paraphrase field names.
+
+**Correct:**
+- **Server address**: Enter the IP address of the backup repository server.
+- **Destination path**: Enter the destination path for the backup repository.
+
+**Incorrect:**
+- **Server**: Enter the IP address of the server for the backup repository. *(shortened field name)*
+
+**Examples (Chinese source → English translation):**
+
+| Chinese source | English translation |
+|---|---|
+| 服务器：输入备份仓库服务器的 IP 地址。 | **Server address**: Enter the IP address of the backup repository server. |
+
+---
+
+## Rule 30 — Sentence Structure: Use Clear and Direct Phrasing for Paths and Locations
+
+When describing file paths, directories, or locations, use clear and direct phrasing that avoids ambiguity.
+
+**Correct:**
+- Ensure that the path is an empty directory.
+- The path must not overlap with the path of another backup repository.
+
+**Incorrect:**
+- Make sure this path is an empty directory...and that it does not duplicate the path of another backup repository. *(less precise phrasing)*
+
+**Examples (Chinese source → English translation):**
+
+| Chinese source | English translation |
+|---|---|
+| 确保此路径为空目录...并且不与其他备份仓库的路径重复。 | Ensure that the path is an empty directory. The path must not overlap with the path of another backup repository. |
+
+---
+
+## Rule 31 — Word Choice: Use Precise Terms for Recommendations and Options
+
+When making recommendations or presenting options, use precise language that clearly indicates the nature of the recommendation.
+
+**Correct:**
+- If both 'NFS 3' and 'NFS 4' are supported, it is recommended to choose 'NFS 4'.
+
+**Incorrect:**
+- If both 'NFS 3' and 'NFS 4' are supported, 'NFS 4' is recommended. *(less explicit phrasing)*
+
+**Examples (Chinese source → English translation):**
+
+| Chinese source | English translation |
+|---|---|
+| 如果同时支持 'NFS 3' 和 'NFS 4'，建议选择 'NFS 4'。 | If both 'NFS 3' and 'NFS 4' are supported, it is recommended to choose 'NFS 4'. |
