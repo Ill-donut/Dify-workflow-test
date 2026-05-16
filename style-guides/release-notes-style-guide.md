@@ -642,3 +642,27 @@ Use "BMC IP address" instead of "BMC IP" in descriptive text within What's New e
 
 **Incorrect:**
 - Detects the BMC IP automatically.
+
+---
+
+## Rule 50 — What's New: Use "Supports" with Gerund for VM-as-Subject Restructuring
+
+When restructuring sentences where the original Chinese uses a VM or platform as the subject performing an action, use a "Supports + gerund" pattern with the feature as the subject.
+
+**Correct:**
+- Supports automatically configuring a maximum of 4 virtual disk multi-queues for virtual machines on Intel x86_64 and Kunpeng AArch64 platforms to improve virtual machine performance.
+
+**Incorrect:**
+- VMs on Intel x86_64 and Kunpeng AArch64 platforms support automatic configuration of up to 4 virtual disk multi-queues to improve VM performance.
+
+---
+
+## Rule 51 — Resolved Issues: Use "pinned volume" Instead of "persistent cache volume"
+
+When referring to volumes that persistently cache data, use "pinned volume" instead of "persistent cache volume". Use "pinned in the cache" instead of "remain in persistent cache".
+
+**Correct:**
+- After creating a snapshot for a pinned volume, the data might fail to remain pinned in the cache. The issue has been resolved in this release.
+
+**Incorrect:**
+- After a snapshot was created for a persistent cache volume, the data might not remain in persistent cache. The issue has been resolved in this release.
