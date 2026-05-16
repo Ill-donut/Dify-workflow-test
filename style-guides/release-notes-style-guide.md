@@ -172,3 +172,365 @@ When referring to the operations and management section, use "Operations and man
 
 **Incorrect:**
 - ### Operations and Maintenance Management
+
+---
+
+## Rule 13 — What's New Entries: Use Direct Simple Present Verb Forms
+
+What's New entries should use direct simple present verb forms (e.g., "Displays", "Automatically enables", "Provides") rather than "Supports + gerund" constructions where possible.
+
+**Correct:**
+- Displays the storage overprovisioning ratio.
+- Automatically enables Boost mode in SMTX OS (ELF) active-active clusters.
+- Provides port connectivity test with alerts for abnormal ports.
+
+**Incorrect:**
+- Supports displaying the storage overprovisioning ratio.
+- Supports automatically enabling Boost mode in SMTX OS (ELF) active-active clusters.
+- Supports providing port connectivity test with alerts for abnormal ports.
+
+---
+
+## Rule 14 — What's New: Use Consistent Verb Choices
+
+Use consistent and precise verbs in What's New entries. Prefer "Allows" over "Supports" when describing functionality that enables user actions. Prefer "Automatically detects" or "Tests" over "Supports detecting" or "Supports detecting and alerting".
+
+**Correct:**
+- Allows editing the configuration of existing volumes.
+- Automatically detects IP conflicts.
+- Tests and alerts for network port connectivity issues.
+
+**Incorrect:**
+- Supports editing the configuration of existing volumes.
+- Supports automatic IP conflict checks.
+- Supports network port connectivity detection and alerts.
+
+---
+
+## Rule 15 — What's New: Use Standard Terminology
+
+Use standard terminology in What's New entries. Prefer "mounting" over "attaching" for storage volumes. Prefer "configuring a policy" over "setting a policy". Prefer "customizing access control" over "custom access control".
+
+**Correct:**
+- Allows mounting volumes to virtual machines.
+- Supports configuring a storage policy.
+- Allows customizing access control.
+
+**Incorrect:**
+- Supports attaching volumes to virtual machines.
+- Supports setting a storage policy.
+- Supports custom access control.
+
+---
+
+## Rule 16 — What's New: Use "Allows" for User-Actionable Features
+
+Use "Allows" (or "Allows + gerund") for features that enable users to perform actions, and use "Supports" for features that provide technical capability or compatibility.
+
+**Correct:**
+- Allows editing the configuration of existing volumes.
+- Allows mounting volumes to virtual machines.
+- Allows removing managed object data.
+- Supports Netswift 10GbE NICs of the txgbe series.
+- Supports SR-IOV passthrough and PCI passthrough for Netswift NICs.
+
+**Incorrect:**
+- Supports editing the configuration of existing volumes.
+- Supports mounting volumes to virtual machines.
+- Supports removing managed object data.
+
+---
+
+## Rule 17 — What's New: Use "Improves" Instead of "Optimizes"
+
+Use "Improves" instead of "Optimizes" in What's New entries when describing performance or behavior enhancements.
+
+**Correct:**
+- Improves virtual machine HA behavior in the following ways:
+- Improves read and write performance.
+
+**Incorrect:**
+- Optimizes VM HA behavior:
+- Optimizes read/write performance.
+
+---
+
+## Rule 18 — What's New: Use "Updates" Instead of "Changes"
+
+Use "Updates" instead of "Changes" when describing modifications to system behavior or parameters.
+
+**Correct:**
+- Updates the data balance policy to avoid disturbing services.
+
+**Incorrect:**
+- Changes the data balance policy to avoid disturbing services.
+
+---
+
+## Rule 19 — What's New: Use "Shortens" Instead of "Optimizes" for Time Reduction
+
+Use "Shortens" instead of "Optimizes" when describing time reduction or speed improvements.
+
+**Correct:**
+- Shortens the time required for updating the disk slot sequence.
+
+**Incorrect:**
+- Optimizes the time required for adjusting the disk slot sequence.
+
+---
+
+## Rule 20 — What's New: Use "Frees up" Instead of "Reduces" for Resource Release
+
+Use "Frees up" instead of "Reduces" when describing the release or freeing of system resources.
+
+**Correct:**
+- Frees up unnecessary management network ports used.
+
+**Incorrect:**
+- Reduces unnecessary ports occupied.
+
+---
+
+## Rule 21 — What's New: Use "Collects" Instead of "Adds collection of"
+
+Use "Collects" instead of "Adds collection of" for monitoring data collection features.
+
+**Correct:**
+- Collects monitoring data for host system partition read-only errors.
+
+**Incorrect:**
+- Adds collection of monitoring data for host system partition read-only errors.
+
+---
+
+## Rule 22 — What's New: Use "Tests" Instead of "Supports detecting" or "Adds detection and alerts for"
+
+Use "Tests" instead of "Supports detecting" or "Adds detection and alerts for" when describing detection or testing features.
+
+**Correct:**
+- Tests and alerts for network port connectivity issues.
+- Tests for host system partition read-only errors.
+
+**Incorrect:**
+- Supports detecting network port connectivity issues.
+- Adds detection and alerts for host system partition read-only errors.
+
+---
+
+## Rule 23 — What's New: Add Backticks for Technical Terms
+
+Add backticks (`) around technical terms such as software names, command names, and package names in What's New entries.
+
+**Correct:**
+- Upgrades `containerd` from v1.6.18 to v1.6.28.
+
+**Incorrect:**
+- Upgrades containerd from v1.6.18 to v1.6.28.
+
+---
+
+## Rule 24 — What's New: Use "Trial and Subscription" with Capitalization
+
+When referring to trial and subscription features, use "Trial and Subscription" with initial capitalization as a proper noun.
+
+**Correct:**
+- Supports viewing existing resources and enabled features in the Trial and Subscription module.
+
+**Incorrect:**
+- Supports viewing created resources and enabled functions in the trial and subscription module.
+
+---
+
+## Rule 25 — What's New: Use "continuous" Instead of "consecutive" for Failures
+
+Use "continuous" instead of "consecutive" when describing a series of failures or exceptions.
+
+**Correct:**
+- Handles continuous physical disk or node failures.
+
+**Incorrect:**
+- Handles consecutive physical disk or node exceptions.
+
+---
+
+## Rule 26 — What's New: Use "data movements" Instead of "data flows"
+
+Use "data movements" instead of "data flows" when describing data transfer operations.
+
+**Correct:**
+- Reduces data movements in reading hotspot areas.
+
+**Incorrect:**
+- Reduces data flows in read-hot data areas.
+
+---
+
+## Rule 27 — What's New: Use "reading hotspot areas" Instead of "read-hot data areas"
+
+Use "reading hotspot areas" instead of "read-hot data areas" when describing frequently accessed data regions.
+
+**Correct:**
+- Reduces data movements in reading hotspot areas.
+
+**Incorrect:**
+- Reduces data flows in read-hot data areas.
+
+---
+
+## Rule 28 — What's New: Use "virtual machine" Instead of "VM" in Descriptive Text
+
+Use "virtual machine" instead of "VM" in descriptive text within What's New entries. Use "VM" only in code snippets or technical references.
+
+**Correct:**
+- Improves virtual machine HA behavior in the following ways:
+- Allows mounting volumes to virtual machines.
+
+**Incorrect:**
+- Improves VM HA behavior in the following ways:
+- Allows mounting volumes to VMs.
+
+---
+
+## Rule 29 — What's New: Use "booting status" Instead of "startup status"
+
+Use "booting status" instead of "startup status" when referring to the operating system boot process.
+
+**Correct:**
+- Detects virtual machine operating system booting status.
+
+**Incorrect:**
+- Detects VM operating system startup status.
+
+---
+
+## Rule 30 — What's New: Use "hot migration" Instead of "live migration"
+
+Use "hot migration" instead of "live migration" when referring to virtual machine migration.
+
+**Correct:**
+- Supports virtual machine hot migration.
+
+**Incorrect:**
+- Supports VM live migration.
+
+---
+
+## Rule 31 — What's New: Add "Copy-on-Write" Terminology
+
+Use "Copy-on-Write" when describing storage snapshot or cloning technologies.
+
+**Correct:**
+- Supports Copy-on-Write (COW) snapshots.
+
+**Incorrect:**
+- Supports snapshots.
+
+---
+
+## Rule 32 — What's New: Use "occupies" Instead of "occupying" for Cache Capacity
+
+Use "occupies" (simple present) instead of "occupying" (gerund) when describing cache capacity usage.
+
+**Correct:**
+- Occupies 30% - 50% of the node write cache capacity.
+
+**Incorrect:**
+- Occupying 30% to 50% of a node's write cache capacity.
+
+---
+
+## Rule 33 — What's New: Use "might disturb" Instead of "disturb"
+
+Use "might disturb" instead of "disturb" when describing potential service disruption.
+
+**Correct:**
+- Updates the data balance policy to avoid disturbing services that might disturb services.
+
+**Incorrect:**
+- Updates the data balance policy to avoid disturbing services.
+
+---
+
+## Rule 34 — What's New: Use "updating" Instead of "adjustment"
+
+Use "updating" instead of "adjustment" when describing modifications to system parameters or configurations.
+
+**Correct:**
+- Shortens the time required for updating the disk slot sequence.
+
+**Incorrect:**
+- Shortens the time required for adjustment of the disk slot sequence.
+
+---
+
+## Rule 35 — What's New: Use "alerts for" Instead of "an alert item for"
+
+Use "alerts for" instead of "an alert item for" when describing alerting features.
+
+**Correct:**
+- Provides alerts for host system partition read-only errors.
+
+**Incorrect:**
+- Provides an alert item for host system partition read-only errors.
+
+---
+
+## Rule 36 — What's New: Use "S5000C" Instead of "S5000C series"
+
+Use "S5000C" instead of "S5000C series" when referring to specific hardware models.
+
+**Correct:**
+- Supports Netswift S5000C NICs.
+
+**Incorrect:**
+- Supports Netswift S5000C series NICs.
+
+---
+
+## Rule 37 — What's New: Use "existing resources and enabled features" Instead of "created resources and enabled functions"
+
+Use "existing resources and enabled features" instead of "created resources and enabled functions" when describing what users can view.
+
+**Correct:**
+- Supports viewing existing resources and enabled features in the Trial and Subscription module.
+
+**Incorrect:**
+- Supports viewing created resources and enabled functions in the trial and subscription module.
+
+---
+
+## Rule 38 — General Document Titles: Use Sentence Case
+
+For all document titles in release notes (including non-What's New documents), use sentence case. Capitalize only the first word and proper nouns.
+
+**Correct:**
+- title: Installation and upgrade notes
+
+**Incorrect:**
+- title: Installation and Upgrade Notes
+
+---
+
+## Rule 39 — General Sidebar Labels: Use Sentence Case
+
+For all sidebar labels in release notes (including non-What's New documents), use sentence case. Capitalize only the first word and proper nouns.
+
+**Correct:**
+- sidebar_label: Installation and upgrade notes
+
+**Incorrect:**
+- sidebar_label: Installation and Upgrade Notes
+
+---
+
+## Rule 40 — Section Headings in Non-What's New Documents: Use Sentence Case
+
+For all section headings in non-What's New document types, use sentence case. Capitalize only the first word and proper nouns.
+
+**Correct:**
+- ## For installation
+- ## For upgrade
+
+**Incorrect:**
+- ## Installation
+- ## Upgrade
