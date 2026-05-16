@@ -534,3 +534,111 @@ For all section headings in non-What's New document types, use sentence case. Ca
 **Incorrect:**
 - ## Installation
 - ## Upgrade
+
+---
+
+## Rule 41 — What's New: Use "Key Management Services (KMS)" as Standard Terminology
+
+When referring to key management services, use "Key Management Services (KMS)" as the standard terminology. Do not use other variations.
+
+**Correct:**
+- Supports Key Management Services (KMS) for encryption key management.
+
+**Incorrect:**
+- Supports key management service for encryption key management.
+
+---
+
+## Rule 42 — What's New: Use "in clusters with the AArch64 architecture" Instead of "in AArch64 architecture clusters"
+
+Use "in clusters with the AArch64 architecture" instead of "in AArch64 architecture clusters" when describing architecture-specific features.
+
+**Correct:**
+- Supports this feature in clusters with the AArch64 architecture.
+
+**Incorrect:**
+- Supports this feature in AArch64 architecture clusters.
+
+---
+
+## Rule 43 — What's New: Use "dedicated physical disk" Instead of "independent physical disk"
+
+Use "dedicated physical disk" instead of "independent physical disk" when referring to disks assigned for specific purposes.
+
+**Correct:**
+- Uses a dedicated physical disk for cache.
+
+**Incorrect:**
+- Uses an independent physical disk for cache.
+
+---
+
+## Rule 44 — What's New: Use "prevents performance fluctuations" Instead of "avoids performance fluctuations"
+
+Use "prevents performance fluctuations" instead of "avoids performance fluctuations" when describing features that stabilize performance.
+
+**Correct:**
+- Prevents performance fluctuations during high I/O load.
+
+**Incorrect:**
+- Avoids performance fluctuations during high I/O load.
+
+---
+
+## Rule 45 — What's New: Use "bandwidth limits" Instead of "throttling policies"
+
+Use "bandwidth limits" instead of "throttling policies" when referring to bandwidth restriction mechanisms.
+
+**Correct:**
+- Configures bandwidth limits for data replication.
+
+**Incorrect:**
+- Configures throttling policies for data replication.
+
+---
+
+## Rule 46 — What's New: Use "pre-upgrade checks" Instead of "upgrade prechecks"
+
+Use "pre-upgrade checks" instead of "upgrade prechecks" when referring to validation steps before an upgrade.
+
+**Correct:**
+- Runs pre-upgrade checks to verify system readiness.
+
+**Incorrect:**
+- Runs upgrade prechecks to verify system readiness.
+
+---
+
+## Rule 47 — What's New: Use Descriptive Phrasing for VM Placement Group Rules
+
+When describing features that allow ignoring VM placement group rules, use phrasing that clearly explains the action and purpose, such as "to ignore specified VM placement group rules and avoid rule conflicts".
+
+**Correct:**
+- Allows configuring the system to ignore specified VM placement group rules and avoid rule conflicts.
+
+**Incorrect:**
+- Allows ignoring specified VM placement group rules.
+
+---
+
+## Rule 48 — What's New: Use "port status detection frequency" Instead of "network port status detection interval"
+
+Use "port status detection frequency" instead of "network port status detection interval" when referring to how often port status is checked.
+
+**Correct:**
+- Adjusts the port status detection frequency.
+
+**Incorrect:**
+- Adjusts the network port status detection interval.
+
+---
+
+## Rule 49 — What's New: Use "BMC IP address" Instead of "BMC IP" in Descriptive Text
+
+Use "BMC IP address" instead of "BMC IP" in descriptive text within What's New entries.
+
+**Correct:**
+- Detects the BMC IP address automatically.
+
+**Incorrect:**
+- Detects the BMC IP automatically.
