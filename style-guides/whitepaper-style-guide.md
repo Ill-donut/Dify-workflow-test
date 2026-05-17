@@ -265,3 +265,13 @@ When making a comparison or contrast, place the comparative phrase (e.g., "unlik
 **Examples:**
 - "The management platform has no single point of failure, unlike vCenter." — not "The management platform does not have a single point of failure like vCenter."
 - "This system scales horizontally, unlike traditional vertical scaling solutions." — not "Unlike traditional vertical scaling solutions, this system scales horizontally."
+
+---
+
+## Rule 18 — Role Names: Use Indefinite Articles with Role Names
+
+When referring to a role (e.g., Leader, Follower) in a singular countable context, use the indefinite article "a" or "an" before the role name.
+
+**Examples:**
+- "but within a single task execution cycle, it can only be either a Leader or a Follower." — not "but within a single task execution cycle it can only be either Leader or Follower"
+- "Each execution unit can correspond to either a Leader task or a Follower task."
