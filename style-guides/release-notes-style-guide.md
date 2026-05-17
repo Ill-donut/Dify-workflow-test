@@ -703,3 +703,15 @@ When referring to network ports that have been placed in a restricted state, use
 
 **Incorrect:**
 - After an isolated network port was recovered... The issue has been resolved in this release.
+
+---
+
+## Rule 55 — Resolved Issues: Use Descriptive Statement for Non-"Fixed the Issue" Improvements
+
+When an entry in the Resolved issues section was originally phrased as an improvement (e.g., starting with "Improved") rather than a bug fix, restructure it to follow the descriptive statement + resolution clause pattern. Do not retain the original "Improved" phrasing.
+
+**Correct:**
+- High latency on the physical disk hosting the cache partition could result in long-tail delays. The issue has been resolved in this release.
+
+**Incorrect:**
+- Improved long-tail latency caused by high latency on the physical disk to which the cache partition belongs.
