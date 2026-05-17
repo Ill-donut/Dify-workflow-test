@@ -715,3 +715,381 @@ When an entry in the Resolved issues section was originally phrased as an improv
 
 **Incorrect:**
 - Improved long-tail latency caused by high latency on the physical disk to which the cache partition belongs.
+
+---
+
+## Rule 56 — File Organization: Use Subdirectory Structure
+
+Release note files should be organized in a subdirectory named `release-notes/` rather than stored flat in the `test-files/` directory. Move files from `test-files/release_notes_*.md` to `test-files/release-notes/release_notes_*.md`.
+
+**Correct:**
+- test-files/release-notes/release_notes_01.md
+- test-files/release-notes/release_notes_02.md
+
+**Incorrect:**
+- test-files/release_notes_01.md
+- test-files/release_notes_02.md
+
+---
+
+## Rule 57 — Non-What's New Document Title: Use "Compatibility" for Version Supporting Information
+
+When referring to documents that describe version compatibility or supporting information, use "Compatibility" as the document title. Do not use "Version Supporting Information".
+
+**Correct:**
+- title: Compatibility
+
+**Incorrect:**
+- title: Version Supporting Information
+
+---
+
+## Rule 58 — Non-What's New Sidebar Label: Use "Compatibility" for Version Supporting Information
+
+When referring to documents that describe version compatibility or supporting information, use "Compatibility" as the sidebar label. Do not use "Version Supporting Information".
+
+**Correct:**
+- sidebar_label: Compatibility
+
+**Incorrect:**
+- sidebar_label: Version Supporting Information
+
+---
+
+## Rule 59 — Compatibility Section Headings: Use "Compatibility between ... and ..." Pattern
+
+When creating section headings in compatibility documents, use the pattern "Compatibility between [item A] and [item B]". Do not use "Supporting Information for ..." patterns.
+
+**Correct:**
+- ## Compatibility between virtualization platform and server architecture
+- ## Compatibility between SMTX OS and CloudTower
+- ## Compatibility between SMTX OS and other SmartX products
+- ## Compatibility between virtualization platforms and VDI scenarios
+
+**Incorrect:**
+- ## Supporting Information for Virtualization Platforms and Server Types
+- ## Supporting Information for SMTX OS and CloudTower Versions
+- ## Supporting Information for SMTX OS and Other Product Versions
+- ## Supporting Information for Virtualization Platforms and Application Scenarios
+
+---
+
+## Rule 60 — Compatibility Table Headers: Use "Server CPU architecture" Instead of "Server CPU Type"
+
+When referring to CPU types in compatibility tables, use "Server CPU architecture" as the column header. Do not use "Server CPU Type".
+
+**Correct:**
+- `<th><strong>Server CPU architecture</strong></th>`
+
+**Incorrect:**
+- `<th><strong>Server CPU Type</strong></th>`
+
+---
+
+## Rule 61 — CPU Description: Omit "chip" Suffix
+
+When listing CPU architectures in tables or text, omit the word "chip" after the architecture name. Use only the architecture name (e.g., "Intel x86_64", "AMD x86_64", "Hygon x86_64", "Kunpeng AArch64", "Phytium AArch64").
+
+**Correct:**
+- Intel x86_64
+- AMD x86_64
+- Hygon x86_64
+- Kunpeng AArch64
+- Phytium AArch64
+
+**Incorrect:**
+- Intel x86_64 chip
+- AMD x86_64 chip
+- Hygon x86_64 chip
+- Kunpeng AArch64 chip
+- Phytium AArch64 chip
+
+---
+
+## Rule 62 — Compatibility Description: Use "is compatible with" Pattern
+
+When describing compatibility between software versions, use the pattern "[Product A] is compatible with [Product B]". Do not use "[Product A] can be used together with [Product B]" or similar indirect phrasing.
+
+**Correct:**
+- SMTX OS 6.2.0 is compatible with CloudTower 4.5.0 or later.
+- SMTX OS is compatible with other SmartX products.
+
+**Incorrect:**
+- SMTX OS can be used together with other SmartX products.
+- The management service of SMTX OS is provided by CloudTower.
+
+---
+
+## Rule 63 — Product Name: Use "Observability" Instead of "Observability Platform"
+
+When referring to the observability product, use "Observability" instead of "Observability Platform".
+
+**Correct:**
+- - Observability
+
+**Incorrect:**
+- - Observability Platform
+
+---
+
+## Rule 64 — Product Name: Use "Inspector" Instead of "Inspection Center"
+
+When referring to the inspection product, use "Inspector" instead of "Inspection Center".
+
+**Correct:**
+- - Inspector
+
+**Incorrect:**
+- - Inspection Center
+
+---
+
+## Rule 65 — Compatibility Table Headers: Use "Virtualization platform" Instead of "Platform Type"
+
+When referring to platform types in compatibility tables, use "Virtualization platform" as the column header. Do not use "Platform Type".
+
+**Correct:**
+- `<th><strong>Virtualization platform</strong></th>`
+
+**Incorrect:**
+- `<th><strong>Platform Type</strong></th>`
+
+---
+
+## Rule 66 — Compatibility Table Headers: Use "Version" Instead of "Specific Version"
+
+When referring to version information in compatibility tables, use "Version" as the column header. Do not use "Specific Version".
+
+**Correct:**
+- `<th><strong>Version</strong></th>`
+
+**Incorrect:**
+- `<th><strong>Specific Version</strong></th>`
+
+---
+
+## Rule 67 — Compatibility Table Headers: Use "Deployment" Instead of "Deployment Method"
+
+When referring to deployment methods in compatibility tables, use "Deployment" as the column header. Do not use "Deployment Method".
+
+**Correct:**
+- `<th><strong>Deployment</strong></th>`
+
+**Incorrect:**
+- `<th><strong>Deployment Method</strong></th>`
+
+---
+
+## Rule 68 — Compatibility Table Headers: Use "Notes" Instead of "Remarks"
+
+When referring to remarks or additional information in compatibility tables, use "Notes" as the column header. Do not use "Remarks".
+
+**Correct:**
+- `<th><strong>Notes</strong></th>`
+
+**Incorrect:**
+- `<th><strong>Remarks</strong></th>`
+
+---
+
+## Rule 69 — Deployment Description: Use "Deployed on [platform]" Pattern
+
+When describing deployment methods in tables, use the pattern "Deployed on [platform]" instead of "[platform] deployment".
+
+**Correct:**
+- Deployed on host
+- Deployed on SCVM
+
+**Incorrect:**
+- Host deployment
+- SCVM deployment
+
+---
+
+## Rule 70 — Cross-Reference Phrasing: Use "Refer to [document] for [topic]" Pattern
+
+When referring readers to another document, use the pattern "Refer to [document] for [topic]". Do not use "For the [topic], see [document]" or similar indirect phrasing.
+
+**Correct:**
+- Refer to *SMTX OS Virtual Machine Service Compatibility Guide* for supported guest operating systems.
+
+**Incorrect:**
+- For the Guest OS supported by it, see *SMTX OS Virtual Machine Service Compatibility Guide* released with the version.
+
+---
+
+## Rule 71 — Requirement Description: Use "[item] is required" Pattern
+
+When describing requirements in tables or text, use the pattern "[item] is required for the deployment" or "[item] is required". Do not use "Use [item]" or "[item] needs to be installed".
+
+**Correct:**
+- SMTX VMTools `3.2.2` is required for the deployment.
+- No VAAI-NAS plugin is required.
+- VAAI-NAS plugin `2.1-4` is required for the deployment.
+
+**Incorrect:**
+- Use SMTX VMTools `3.2.2`.
+- No VAAI-NAS plugin needs to be installed.
+- Use VAAI-NAS plugin `2.1-4`.
+
+---
+
+## Rule 72 — Non-What's New Document Title: Use "Feature support" for Feature Support Notes
+
+When referring to documents that describe feature support information, use "Feature support" as the document title. Do not use "Feature Support Notes".
+
+**Correct:**
+- title: Feature support
+
+**Incorrect:**
+- title: Feature Support Notes
+
+---
+
+## Rule 73 — Non-What's New Sidebar Label: Use "Feature support" for Feature Support Notes
+
+When referring to documents that describe feature support information, use "Feature support" as the sidebar label. Do not use "Feature Support Notes".
+
+**Correct:**
+- sidebar_label: Feature support
+
+**Incorrect:**
+- sidebar_label: Feature Support Notes
+
+---
+
+## Rule 74 — Feature Description: Use "The following features are available" Pattern
+
+When introducing a list of available features, use the pattern "The following features are available on [product version]." Do not use "This software version supports enabling the following functions and features."
+
+**Correct:**
+- The following features are available on SMTX OS 6.2.0.
+
+**Incorrect:**
+- This software version supports enabling the following functions and features.
+
+---
+
+## Rule 75 — Feature Name: Omit "function" or "feature" Suffix for Standard Feature Names
+
+When listing standard feature names, omit the words "function" or "feature" after the feature name. Use only the feature name (e.g., "RDMA", "SR-IOV", "vGPU").
+
+**Correct:**
+- - RDMA
+- - SR-IOV
+- - vGPU
+
+**Incorrect:**
+- - RDMA function
+- - SR-IOV feature
+- - vGPU function
+
+---
+
+## Rule 76 — Feature Name: Use "Volume pinning" Instead of "Persistent cache mode"
+
+When referring to the feature that allows data to remain in cache, use "Volume pinning" instead of "Persistent cache mode".
+
+**Correct:**
+- - Volume pinning
+
+**Incorrect:**
+- - Persistent cache mode
+
+---
+
+## Rule 77 — Non-What's New Document Title: Use "Function support (for the AArch64 architecture)" for AArch64 Function Notes
+
+When referring to documents that describe function support for the AArch64 architecture, use "Function support (for the AArch64 architecture)" as the document title. Do not use "Function Notes (AArch64 Architecture)".
+
+**Correct:**
+- title: Function support (for the AArch64 architecture)
+
+**Incorrect:**
+- title: Function Notes (AArch64 Architecture)
+
+---
+
+## Rule 78 — Non-What's New Sidebar Label: Use "Function support (for the AArch64 architecture)" for AArch64 Function Notes
+
+When referring to documents that describe function support for the AArch64 architecture, use "Function support (for the AArch64 architecture)" as the sidebar label. Do not use "Function Notes (AArch64 Architecture)".
+
+**Correct:**
+- sidebar_label: Function support (for the AArch64 architecture)
+
+**Incorrect:**
+- sidebar_label: Function Notes (AArch64 Architecture)
+
+---
+
+## Rule 79 — Feature Limitation Description: Use "not available if" Pattern for Unsupported Features
+
+When describing features that are not supported on certain architectures, use the pattern "The following functions related to [topic] are not available if SMTX OS is deployed on the [architecture]." Do not use "When SMTX OS is deployed on [architecture], the following functions... are not supported."
+
+**Correct:**
+- The following functions related to virtual machine services are not available if SMTX OS is deployed on the `Kunpeng AArch64` or `Phytium AArch64` architecture:
+- The following functions are also not available if SMTX OS is deployed on the `Phytium AArch64` architecture:
+
+**Incorrect:**
+- When SMTX OS is deployed on Kunpeng AArch64 servers or Phytium AArch64 servers, the following functions related to virtual machine services are not supported.
+- When SMTX OS is deployed on Phytium AArch64 servers, the following functions are also not supported.
+
+---
+
+## Rule 80 — NIC Description: Omit "-mode" Suffix for NIC Modes
+
+When describing NIC modes or types, omit the "-mode" suffix. Use only the mode name (e.g., "E1000 NIC").
+
+**Correct:**
+- - E1000 NIC
+
+**Incorrect:**
+- - E1000-mode NIC
+
+---
+
+## Rule 81 — Graphics Card Description: Omit "-mode" Suffix for Graphics Card Modes
+
+When describing graphics card modes or types, omit the "-mode" suffix. Use only the mode name (e.g., "Cirrus, VGA, and QXL graphics cards").
+
+**Correct:**
+- - Cirrus, VGA, and QXL graphics cards
+
+**Incorrect:**
+- - Cirrus, VGA, and QXL-mode graphics cards
+
+---
+
+## Rule 82 — Non-What's New Document Title: Use "Recommendation" for Usage Recommendation
+
+When referring to documents that provide usage recommendations, use "Recommendation" as the document title. Do not use "Usage Recommendation".
+
+**Correct:**
+- title: Recommendation
+
+**Incorrect:**
+- title: Usage Recommendation
+
+---
+
+## Rule 83 — Non-What's New Sidebar Label: Use "Recommendation" for Usage Recommendation
+
+When referring to documents that provide usage recommendations, use "Recommendation" as the sidebar label. Do not use "Usage Recommendation".
+
+**Correct:**
+- sidebar_label: Recommendation
+
+**Incorrect:**
+- sidebar_label: Usage Recommendation
+
+---
+
+## Rule 84 — Recommendation Description: Use "It is recommended to deploy" Pattern
+
+When providing deployment recommendations, use the pattern "It is recommended to deploy [product version] on [condition]." Do not use "This software version is recommended for deployment in [condition]."
+
+**Correct:**
+- It is recommended to deploy SMTX OS 6.2.0 on clusters of no more than 64 nodes.
+
+**Incorrect:**
+- This software version is recommended for deployment in clusters with no more than 64 nodes.
