@@ -85,6 +85,7 @@ When a technical abbreviation or acronym appears for the first time in a documen
 - Virtual Machine (VM) — not just VM on first use
 - Job Center Worker (JC Worker) — not just JC Worker on first use
 - Job Center Scheduler (JC Scheduler) — not just JC Scheduler on first use
+- Directed acyclic graph (DAG) — not just DAG on first use
 
 ---
 
@@ -110,6 +111,8 @@ Prefer precise, active verbs over vague or overly formal constructions. Avoid re
 - "minimize" — not "reduce" (when referring to impact)
 - "undergo" — not "legally transition" (when referring to state changes)
 - "proceed" — not "begin" (when referring to task splitting)
+- "integrates with" — not "can be integrated with" (active voice)
+- "handles" — not "takes over" (when referring to a worker processing a job)
 
 ---
 
@@ -156,6 +159,9 @@ Eliminate redundant or filler words in headings, bullet points, and sentences. P
 - "As a result" — not "Therefore"
 - "a collection of" — not "a set of" (when referring to resources)
 - "decomposed" — not "broken down"
+- "Throughout this document" — not "In the following text, for ease of description and understanding"
+- "form an unordered set" — not "become a group of tasks with no ordering or sequence"
+- "described as follows" — not "shown below" (when referring to text-based relationships)
 
 ---
 
@@ -177,6 +183,7 @@ Use standard industry terminology and phrasing for technical concepts rather tha
 - "validity of state transitions" — not "legality of transitions between resource states"
 - "statuses" — not "states" (when referring to task or job status)
 - "subtasks" — not "sub-tasks"
+- "could corrupt" — not "may damage" (when referring to data integrity)
 
 ---
 
@@ -248,3 +255,13 @@ When referring to specific states (e.g., Active, Standby, Shutdown, Running) or 
 - "JC Worker instances have no primary or secondary distinction; all are in the **Active** state."
 - "Suppose a virtual machine is currently in the **Shutdown** state, and a Job is submitted to bring it to the **Running** state."
 - "transitioning from **Shutdown** to **Running** requires a power-on operation"
+
+---
+
+## Rule 17 — Sentence Structure: Place Comparative Phrases at the End for Clarity
+
+When making a comparison or contrast, place the comparative phrase (e.g., "unlike X") at the end of the sentence for better clarity and flow.
+
+**Examples:**
+- "The management platform has no single point of failure, unlike vCenter." — not "The management platform does not have a single point of failure like vCenter."
+- "This system scales horizontally, unlike traditional vertical scaling solutions." — not "Unlike traditional vertical scaling solutions, this system scales horizontally."
