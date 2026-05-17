@@ -1093,3 +1093,15 @@ When providing deployment recommendations, use the pattern "It is recommended to
 
 **Incorrect:**
 - This software version is recommended for deployment in clusters with no more than 64 nodes.
+
+---
+
+## Rule 85 — What's New: Use "upgrade prechecks" Instead of "pre-upgrade checks"
+
+Use "upgrade prechecks" instead of "pre-upgrade checks" when referring to validation steps performed before an upgrade.
+
+**Correct:**
+- Adds upgrade prechecks to prevent long data recovery time caused by excessive write cache usage.
+
+**Incorrect:**
+- Runs pre-upgrade checks to verify system readiness.
