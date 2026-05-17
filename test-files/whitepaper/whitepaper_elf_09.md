@@ -7,4 +7,4 @@ id: whitepaper_elf_09
 
 # Job Queue
 
-Job Queue is the queue implementation for Job. As long as a specific flag is included when submitting a Job, Jobs with the same flag will be executed sequentially according to the order in which they were submitted. Job Queue plays an important role in recovery after congestion blocking and in controlling resource preemption. Tasks that currently use this feature include virtual machine HA, Job Recovery, and scheduled snapshots.
+Job Queue is a queue implementation for Jobs. When a Job is submitted with a specific flag, all Jobs sharing the same flag are executed sequentially in the order they were submitted. Job Queue plays an important role in recovering from congestion and controlling resource contention. Tasks that currently use this feature include virtual machine HA, Job Recovery, and scheduled snapshots.

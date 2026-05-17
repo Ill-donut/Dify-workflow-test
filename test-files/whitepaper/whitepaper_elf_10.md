@@ -7,7 +7,7 @@ id: whitepaper_elf_10
 
 # Job Resource Group
 
-Job Resource Group serves resource-type Jobs by grouping resources within the same Job, so that operations are isolated when handling dependencies and constructing a directed acyclic graph. The grouping relationship must be specified when submitting the Job. If there are multiple groups, there are multiple directed acyclic graphs, because there are no dependencies between the graphs, so they can be executed in parallel. Currently, this feature is used in batch processing, for example, batch creation of virtual machines from a virtual machine template.
+Job Resource Group is a feature that serves resource-type Jobs. It groups resources within a single Job so that dependencies can be handled and DAGs can be built in isolation for each group. Group assignments must be specified when submitting the Job. If there are multiple groups, each group has its own DAG; because there are no dependencies between groups, they can be executed in parallel. This feature is currently used in batch operations, such as creating virtual machines from a VM template in batches.
 
 ![ELF-4.10.png](../assets/elf-white-paper/image12.png)
 

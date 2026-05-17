@@ -1,42 +1,40 @@
 ---
-title: Job Type
-sidebar_label: Job Type
+title: Job types
+sidebar_label: Job types
 hide_title: true
 id: whitepaper_elf_08
 ---
 
-# Job Type
+# Job types
 
-## Resource Type
+## Resource type
 
-A resource type is a task that reaches a desired state by describing the state of a resource and handling it in a manner similar to a state machine. Its core idea is resource state assurance. In other words, no matter what the current state is, the system will ensure that after the current resource description is submitted, the resulting state is consistent with what was submitted.
+The resource type manages tasks by describing resource states and processing them in a state-machine-like manner to reach the target state. Its core concept is resource state assurance: regardless of the current state, the system guarantees that after the current resource description is submitted, the result will be consistent with what was submitted.
 
 ![ELF-4.8.1.png](../assets/elf-white-paper/image15.png)
 
 Advantages:
 
-- Non-operation-based description, avoiding errors caused by inconsistent states.
+- Non-operational descriptions avoid errors caused by state inconsistency.
+- Friendly to frontend entry points; input is simple and the frontend does not need to analyze behavior.
+- Can complete a series of complex transaction-like tasks.
 
-- Friendly to frontend entry points, simple input, and no need for frontend behavior analysis.
+## One-time task type
 
-- Can complete a series of complex transactional-like tasks.
+One-time tasks are typically used for tasks that are time-consuming yet well-defined and straightforward, such as attaching a disk or removing a host.
 
-## One-time Task Type
+## Scheduled task type
 
-One-time tasks are usually used for tasks that take a relatively long time but are clearly simple, such as mounting disks and removing hosts.
+Scheduled tasks are triggered periodically by Job Center Scheduler, and are used to handle tasks that need to run in a continuous loop, such as alert checks and the virtual machine HA function.
 
-## Scheduled Task Type
+The overall scheduled task process has two main parts:
 
-Scheduled tasks are timed tasks triggered by Job Center Scheduler and are used to handle tasks that need to loop continuously, such as alarm checks and virtual machine HA features.
+- Job Center Scheduler periodic trigger
 
-The overall scheduled task process mainly consists of two parts:
-
-- Timed triggering by Job Center Scheduler
-
-    Scheduled tasks are triggered by Job Center Scheduler deployed on only three or five fixed nodes. As long as one node service is functioning normally, scheduled tasks can be executed normally. Multi-node deployment is used for better disaster recovery.
+    Scheduled tasks are triggered by Job Center Scheduler, which is deployed only on a fixed set of three or five nodes. As long as one node's service is healthy, scheduled tasks will execute normally. Multi-node deployment provides more robust disaster recovery.
 
     ![ELF-4.8.3.png](../assets/elf-white-paper/image14.png)
 
-- Execute a specific task
+- Execution of well-defined tasks
 
-    Scheduled tasks do not have a state machine-like setup like resource types, so when submitting a scheduled task, you need to enter the task to be executed and the required details.
+    Unlike resource-type tasks, scheduled tasks have no state-machine-like setup. Therefore, when a scheduled task is submitted, the task to be executed and the required details must be specified upfront.

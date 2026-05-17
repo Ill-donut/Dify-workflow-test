@@ -1,124 +1,94 @@
 ---
-title: Job Scheduling Mechanism
-sidebar_label: Job Scheduling Mechanism
+title: Job scheduling mechanism
+sidebar_label: Job scheduling mechanism
 hide_title: true
 id: whitepaper_elf_07
 ---
 
-# Job Scheduling Mechanism
+# Job scheduling mechanism
 
-The scheduling mechanism of Job Center is based on a directed acyclic graph, and each node in the graph is a Follower task. The straight lines with arrows indicate the dependency relationships between tasks.
+The Job Center scheduling mechanism is based on a directed acyclic graph (DAG), where each node represents a Follower task and each directed edge represents a dependency between tasks.
 
-Task scheduling follows these principles:
+The task scheduling rules are as follows:
 
-- In the directed acyclic graph formed by all Follower tasks, nodes with in-degree 0 are called ready tasks, indicating that the task has no dependent tasks or its dependent tasks have already been completed, and the task is ready and waiting to be executed;
+- Among all Follower tasks forming the DAG, a task with an in-degree of 0 is called a ready task, meaning it has no dependencies or all its dependencies have completed; it is ready to be executed.
+- When the Leader submits tasks to Followers, it submits all ready tasks.
+- When a Follower task completes, the Follower checks whether any downstream tasks that depend on it are now ready to execute and submits them to one or more Followers.
+- The criterion for checking whether new tasks are ready: after removing the current Follower's task node, check whether any new ready task nodes have appeared.
+- Each Follower task's database update operations must be atomic throughout the entire Job execution cycle, to ensure that multiple upstream tasks of the same Follower see a consistent state of their downstream task at the same moment, thereby guaranteeing correct execution order.
+- A failed task node is not removed from the graph; instead, the Follower marks all tasks that directly or indirectly depend on it as failed.
+- The last task to complete or fail is resubmitted to the Leader.
 
-- When the Leader submits tasks to the Followers, it submits all ready tasks;
-
-- When a Follower task completes, the Follower needs to check whether downstream tasks that depend on this task have any executable tasks and submit them to one or more next Followers;
-
-- The criterion for a Follower to check whether there are new tasks that can be executed is: after deleting the current Follower's task node, whether new ready task nodes are generated;
-
-- The database update operation for each Follower task must ensure atomicity throughout the entire Job execution cycle, to ensure that multiple upstream tasks of the Follower task see a consistent downstream task state at the same time, thereby ensuring that tasks are executed correctly according to the workflow;
-
-- Failed tasks will not have their nodes deleted, and this Follower will mark all tasks that directly or indirectly depend on this task as failed;
-
-- The last completed or failed Follower submits back to the Leader again.
-
-Below are two simple examples to illustrate how subtasks are scheduled in Job Center.
+The following two examples illustrate how subtasks are scheduled in Job Center.
 
 ![](../assets/elf-white-paper/image3.png)
 
-## Normal Successful Job
+## Successful Job
 
-As shown in the figure above, the concurrent execution steps are summarized as follows:
+As shown in the diagram above, the concurrent execution steps are as follows:
 
-1. The Leader receives the task and builds the DAG, determines that there are three tasks that can be executed concurrently, namely ① ② ③, and submits the tasks;
+1. The Leader receives the tasks and builds the DAG. It determines that three tasks ①②③ that can be executed concurrently and submits them.
+2. After ① completes, dependencies `a` and `b` are removed. However, ④ and ⑦ still have dependencies and cannot execute, so no new tasks are triggered.
+3. After ② completes, dependencies `c`, `d`, `e`, and `f` are removed. ④⑤⑥ become ready tasks and are submitted by ②'s Follower.
+4. After ③ completes, no new dependencies are removed. All currently ready tasks are still running, so no new tasks are triggered.
+5. After ⑤ completes, dependency `i` is removed. However, ⑧ still depends on ⑥ and cannot be triggered, so no new tasks are triggered.
+6. After ④ completes, dependencies `g` and `h` are removed. ⑦ becomes a ready task and is submitted by ④'s Follower. ⑨ still depends on ⑥, so no new tasks are triggered.
+7. After ⑥ completes, dependencies `j` and `k` are removed. ⑧⑨ become ready tasks and are submitted by ⑥'s Follower.
+8. After ⑧ completes, there are no more executable tasks.
+9. After ⑨ completes, there are no more executable tasks.
+10. After ⑦ completes, all tasks are done. A message is triggered and resubmitted to the Leader to finalize.
+11. The Leader verifies all tasks succeeded, marks the Job as Done, and exits.
 
-2. After ① finishes, dependencies a and b disappear, but ④ and ⑦ still have dependencies and cannot be executed, so it exits;
+## Failed Job
 
-3. After ② finishes, dependencies c, d, e, and f disappear. ④ ⑤ ⑥ can be executed as ready tasks, so the tasks ④ ⑤ ⑥ are triggered and sent by the Follower of ②;
+As shown in the diagram above, the concurrent execution steps are as follows, with task ④ failing:
 
-4. After ③ finishes, it disappears without generating dependencies. All executable ready tasks are currently still running, so it exits;
+1. The Leader receives the tasks and builds the DAG. It determines that three tasks ①②③ that can be executed concurrently and submits them.
+2. After ① completes, dependencies `a` and `b` are removed. However, ④ and ⑦ still have dependencies and cannot execute, so no new tasks are triggered.
+3. After ② completes, dependencies `c`, `d`, `e`, and `f` are removed. ④⑤⑥ become ready tasks and are submitted by ②'s Follower.
+4. After ③ completes, no new dependencies are removed. All currently ready tasks are still running, so no new tasks are triggered.
+5. After ⑤ completes, dependency `i` is removed. However, ⑧ still depends on ⑥ and cannot be triggered, so no new tasks are triggered.
+6. ④ fails; all downstream tasks related to ④, namely ⑦ and ⑨, are marked as failed.
+7. After ⑥ completes, dependencies `j` and `k` are removed. ⑧⑨ would be ready tasks, but ⑨ is marked as failed, so only ⑧ is submitted.
+8. After ⑧ completes, all tasks are done. A message is triggered and resubmitted to the Leader to finalize.
+9. The Leader marks the Job as Failed and exits.
 
-5. After ⑤ finishes, dependency i disappears, but ⑧ still depends on ⑥, so the task cannot be triggered, and it exits;
+All graph updates must be atomic. When step 7 executes, the downstream tasks ⑦ and ⑨ related to ④ must already be in a failed state. Swapping the order of steps 6 and 7 does not produce a different result. If steps 6 and 7 complete simultaneously, Job Center periodically detects this situation and submits ready task ⑧.
 
-6. After ④ finishes, dependencies g and h disappear, ⑦ becomes a ready task and is triggered and sent by the Follower of ④. ⑨ still depends on ⑥, so it exits;
+## Node power failure causing Follower/Leader failure mid-execution
 
-7. After ⑥ finishes, dependencies j and k disappear, ⑧ and ⑨ become ready tasks, and are triggered and sent by the Follower of ⑥;
+If any in-flight Follower is unable to execute due to a power failure or network interruption, a scheduled task triggered by the Scheduler checks the status of all subtasks of running Jobs, including each subtask's executor Handler (see [Job Recovery mechanism](#job-recovery-mechanism)), start time, and the timeout duration for submitted but unexecuted tasks. Any abnormal tasks are resubmitted, and the system waits for the final Follower to trigger the Leader to complete the Job. If execution is interrupted after all Followers have completed but before the result is submitted back to the Leader—due to a power failure or system crash—the Scheduler resubmits the task to the Leader for processing.
 
-8. After ⑧ finishes, there are no executable tasks, so it exits;
+## Job Recovery mechanism
 
-9. After ⑨ finishes, there are no executable tasks, so it exits;
+The Job Recovery mechanism is designed to ensure that any distributed task is always in either a "completed" or "failed" state, and never in an intermediate state. For example, failures caused by power, network, disk, or OS issues do not leave any task (such as creating a virtual machine or creating a disk) in an intermediate state that would lock the resource.
 
-10. After ⑦ finishes, all tasks are complete, and a message is triggered and resent to the Leader for final summary and completion;
+Job Recovery is implemented as a scheduled task that checks periodically. When the scheduled time arrives, Job Center Scheduler triggers a task and sends it to Job Center Worker to check whether any Jobs need recovery. The task sent to Job Center Worker is a cluster task with no specified node, so it works as long as at least one node in the cluster is healthy.
 
-11. The Leader checks that all tasks succeeded, marks the Job as Done, and exits;
+In addition, because Job Recovery tasks are cluster tasks, to prevent an accumulation of too many tasks of the same type due to delays or burst task volumes, the Job Queue feature is used to ensure only one cluster recovery task runs at a time.
 
-## Job Fails Midway
-
-As shown in the figure above, the concurrent execution steps are summarized as follows, with task ④ failing during execution:
-
-1. The Leader receives the task and builds the DAG, determines that there are three tasks that can be executed concurrently, namely ① ② ③, and submits the tasks;
-
-2. After ① finishes, dependencies a and b disappear, but ④ and ⑦ still have dependencies and cannot be executed, so it exits;
-
-3. After ② finishes, dependencies c, d, e, and f disappear. ④ ⑤ ⑥ can be executed as ready tasks, so the tasks ④ ⑤ ⑥ are triggered and sent by the Follower of ②;
-
-4. After ③ finishes, it disappears without generating dependencies. All executable ready tasks are currently still running, so it exits;
-
-5. After ⑤ finishes, dependency i disappears, but ⑧ still depends on ⑥, so the task cannot be triggered, and it exits;
-
-6. Task ④ fails. Mark all downstream tasks related to ④ as failed, that is, ⑦ ⑨, and exit;
-
-7. After ⑥ finishes, dependencies j and k disappear. ⑧ and ⑨ are ready tasks, but ⑨ has been marked as failed, so only task ⑧ is submitted;
-
-8. After ⑧ finishes, it is checked that all tasks have been completed, and a message is triggered and resent to the Leader for final summary and completion;
-
-9. The Leader marks the Job as Failed and exits;
-
-All graph updates must be atomic operations. When step 7 is executed, the downstream tasks ⑦ and ⑨ related to ④ must both be in the failed state. In the above tasks, swapping steps 6 and 7 will not produce a different result. If steps 6 and 7 finish at the same time, Job Center will periodically detect this situation and submit the ready task ⑧.
-
-## Follower/Leader Failure Caused by Power Loss of a Node During Execution
-
-If any Follower during execution cannot continue due to power loss or network interruption, the scheduled task triggered by the Scheduler will check the subtasks' states for all running Jobs, including the subtask executor Handler ([see Job Recovery Mechanism](#job-recovery-mechanism)), start time, and the timeout for tasks that were submitted but not executed. Abnormal tasks will be resubmitted, and then it waits for the final Follower to trigger the Leader to complete the Job. If execution is interrupted because of power loss or a crash when all Followers have finished and there was no time to submit back to the Leader, then the Scheduler resubmits the task to the Leader for processing.
-
-## Job Recovery Mechanism
-
-The purpose of Job Recovery is to handle distributed tasks in either the "completed" or "failed" state at any time, without an intermediate state. For example, failures in power, network, disk, operating system, and so on will not leave any task, such as creating a virtual machine or creating a disk, in an intermediate state that locks resources.
-
-Job Recovery is implemented through a periodic scheduled task. When the scheduled time is reached, Job Center Scheduler will trigger a task and send it to Job Center Worker to check whether there are Jobs that need recovery. The task sent to Job Center Worker is a cluster task and does not specify a node, so as long as at least one node in the cluster is normal, it can work properly.
-
-In addition, because the Job Recovery task is a cluster task, to prevent too many tasks of the same type from accumulating due to delays or a sudden burst of tasks, the characteristics of the Job Queue are used to control that only one cluster recovery task can exist at the same time.
-
-The Job description contains the following information used for recovery decisions:
+The Job description contains the following information used for recovery determination:
 
 - Handler
 
-  Used to record the current handler of a Job or a subtask under the Job. The content is the temporary UUID generated when each Job Center Worker starts.
+  Records the current handler of the Job or its subtask, identified by the temporary UUID assigned when each Job Center Worker starts.
 
-- Creation time of the Job and each subtask
+- Creation time of Job and each subtask
 
-  The creation time of the Job and the subtasks under the Job. The creation time of the Job is the time when the Job is submitted to the database; the creation time of subtasks under the Job is the time when the Splitter finishes analyzing and writes them into the database.
+  The creation time of the Job is the time it was submitted to the database; the creation time of a subtask is the time it was written to the database after Splitter analysis.
 
-- Last modification time of the Job and each subtask
+- Last modification time of Job and each subtask
 
-- Completion time of the Job and each subtask
+- Completion time of Job and each subtask
 
-  The completion time of a subtask under the Job should be the time when the individual task completes; the completion time of the Job is the time when all tasks in the entire Job have completed.
+  The completion time of a subtask is the time that the individual subtask is completed; the completion time of the Job is the time all tasks in the Job are completed.
 
 Job Recovery rules:
 
-- Check all running and non-running Jobs every minute;
-
-- Each Job and each subtask under the Job must record allocation time, execution time, and Handler ID;
-
-- If the Handler is no longer running, resubmit the Job or subtask to Job Center for processing;
-
-- When the Handler has not been written for more than 5 minutes: if it is a Leader task, resubmit it; if it is a Follower task, submit the corresponding task to Job Center for processing. If a subtask is assigned to a specific node but the node does not respond, mark that subtask as failed;
-
-- If all subtasks of a Job have been executed, but the Job has not been marked completed or failed for more than 1 minute, resubmit the Job to Job Center for processing;
-
-- If the task message sent to Job Center is duplicated, do not resubmit it; after a task is marked failed, clear the waiting or unfinished messages;
-
-- When determining the type of a Job that needs to be resubmitted as described above and it is Scheduler, the Job will not be resubmitted and the entire Job and unfinished subtasks will be marked as Failed, to prevent a large number of scheduled tasks from continuously retrying.
+- Check all running and non-running Jobs every minute.
+- Each Job and its subtasks must record the assigned time, execution time, and Handler ID.
+- If the Handler is no longer running, resubmit the Job or subtask to Job Center for processing.
+- If the Handler has not been written for more than 5 minutes: if it is a Leader task, resubmit it; if it is a Follower task, submit the corresponding task to Job Center for processing. If the subtask targets a specific node but that node is unresponsive, mark the subtask as failed.
+- If all subtasks of a Job have completed but the Job has not been marked as complete or failed for more than 1 minute, resubmit the Job to Job Center for processing.
+- If duplicate task messages are sent to Job Center, it will not be resubmitted. When a task is marked as failed, clean up any waiting or incomplete messages.
+- If a Job requiring resubmission is of the Scheduler type, it will not be resubmitted; instead mark the entire Job and all incomplete subtasks as Failed, to prevent a large number of scheduled tasks from continuously retrying.

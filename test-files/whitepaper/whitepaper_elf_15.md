@@ -1,13 +1,10 @@
 ---
-title: Data Storage
-sidebar_label: Data Storage
+title: Datastores
+sidebar_label: Datastores
 hide_title: true
 id: whitepaper_elf_15
 ---
 
-# Data Storage
+# Datastore
 
-Data storage is a basic unit of data protection and storage policies. Each data storage contains a set of objects with the same data protection policy. Data storage provides services through standard protocols. Currently, ZBS supports
-iSCSI and NFS storage communication protocols, and ELF provides corresponding RESTful API support for these two protocols. In the SMTX OS
-virtual machine service storage policy section, it has already been mentioned that ZBS storage objects in ELF are not automatically recognized by the SMTX OS
-virtual machine service. In most cases, users can independently manage cluster data storage through the RESTful API provided by ELF without directly accessing the programmable interface of ZBS.
+A datastore is the basic unit of data protection and storage policies. Each datastore contains a set of objects sharing the same data protection policy. Datastores provide services through standard protocols; ZBS currently supports iSCSI and NFS storage communication protocols, and ELF provides corresponding RESTful API support for both. As mentioned in the SMTX OS virtual machine service storage policies section, ZBS storage objects in ELF are not automatically detected by the SMTX OS virtual machine service. In most cases, you can independently manage cluster datastores through the RESTful APIs provided by ELF without directly accessing ZBS's programmable interface.

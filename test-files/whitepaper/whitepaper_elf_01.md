@@ -7,22 +7,22 @@ id: whitepaper_elf_01
 
 # Overview
 
-ELF is a virtualized computing platform developed by SmartX based on KVM. It can be integrated with SmartX-designed and -developed distributed block storage service (ZBS) to provide a complete hyperconverged virtualization solution. In the following text, for ease of description and understanding, ELF will be used to refer to the computing platform of the KVM-based virtual machine service, and ZBS will be used to refer to SmartX's self-developed distributed block storage service.
+ELF is a virtualization computing platform developed by SmartX based on Kernel-based Virtual Machine (KVM). It integrates with ZBS, the distributed block storage service designed and developed by SmartX, to deliver a complete hyper-converged virtualization solution. Throughout this document, ELF refers to the KVM-based virtual machine service computing platform, and ZBS refers to SmartX's proprietary distributed block storage service.
 
-ELF implements the requirements of common virtualized computing scenarios, such as virtual machine management and VLAN network management. ELF is easy to operate and maintain, and removes a large number of infrequently used features, greatly reducing the learning and operations costs of the system. Users can manage the hyperconverged virtualized computing platform through simple web interactions. In addition, because the underlying storage uses ZBS, virtual machines running on the ELF platform have excellent I/O performance, as well as highly reliable and highly available data.
+ELF addresses common virtualization computing requirements such as virtual machine management and VLAN network management. ELF is easy to operate and maintain, as unnecessary low-frequency features have been removed, which significantly reduces the system's learning curve and operational overhead. You can manage the hyper-converged virtualization platform through a simple web interface. In addition, because the underlying storage is powered by ZBS, virtual machines running on the ELF platform deliver excellent I/O performance with high data reliability and availability.
 
-- Fully distributed architecture design
+- Fully distributed architecture
 
-    The management platform does not have a single point of failure like vCenter.
+    The management platform has no single point of failure, unlike vCenter.
 
-- Simple and easy-to-use Web UI
+- Simple and intuitive Web UI
 
-    The Hypervisor is based on open source KVM and provides virtualization computing capabilities for most virtualization scenarios.
+    Built on open-source KVM, the platform meets the requirements of most virtualization scenarios.
 
-- VM high availability
+- Virtual machine high availability
 
-    When a physical server fails, the virtual machines on it are automatically migrated to healthy physical servers to ensure high business availability.
+    When a physical server fails, the virtual machines on it are automatically migrated to healthy physical servers, ensuring business continuity.
 
 - VLAN network support
 
-    Supports VLAN Layer 2 network isolation, with simple configuration and operations, meeting most network usage scenarios.
+    Supports Layer 2 VLAN network isolation with simple configuration and maintenance, covering most network use cases.
