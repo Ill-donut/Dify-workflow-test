@@ -666,3 +666,28 @@ When referring to volumes that persistently cache data, use "pinned volume" inst
 
 **Incorrect:**
 - After a snapshot was created for a persistent cache volume, the data might not remain in persistent cache. The issue has been resolved in this release.
+
+---
+
+## Rule 52 — What's New: Add "Copy-on-Write (COW)" Expansion for Acronym Clarity
+
+When using the acronym "COW" to refer to Copy-on-Write technology, explicitly expand it as "Copy-on-Write (COW)" on first usage in an entry.
+
+**Correct:**
+- Optimizes the granularity of snapshot COW (Copy-on-Write).
+
+**Incorrect:**
+- Optimizes the granularity of snapshot COW.
+
+---
+
+## Rule 53 — Resolved Issues: Handle Partial Deletion Appropriately
+
+When a resolved issue entry is deleted in its entirety, it may be removed from the release notes. Do not leave empty bullet points or placeholder text.
+
+**Correct:**
+- *(Entry removed entirely)*
+
+**Incorrect:**
+- - *(empty bullet point)*
+- Fixed the issue where, after node replacement... *(retained incorrectly)*
