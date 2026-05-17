@@ -691,3 +691,15 @@ When a resolved issue entry is deleted in its entirety, it may be removed from t
 **Incorrect:**
 - - *(empty bullet point)*
 - Fixed the issue where, after node replacement... *(retained incorrectly)*
+
+---
+
+## Rule 54 — Resolved Issues: Use "quarantined" Instead of "isolated" for Network Ports
+
+When referring to network ports that have been placed in a restricted state, use "quarantined" instead of "isolated".
+
+**Correct:**
+- After a network port was quarantined and then recovered... The issue has been resolved in this release.
+
+**Incorrect:**
+- After an isolated network port was recovered... The issue has been resolved in this release.
