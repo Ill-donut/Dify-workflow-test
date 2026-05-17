@@ -1,14 +1,14 @@
 ---
-title: What's in this release
-author: SmartX documentation team
+title: Release Update Notes
+author: SmartX Documentation Team
 hide_title: true
 id: release_notes_01
-sidebar_label: What's in this release
+sidebar_label: Release Update Notes
 ---
 
-# What's in this release
+# Release Update Notes
 
-## What's new
+## New
 
 ### Virtualization
 
@@ -47,14 +47,14 @@ sidebar_label: What's in this release
 ### Virtualization
 
 - Optimizes virtual machine hot migration by improving migration speed and reducing performance impact during the migration process.
-- Improves virtual machine HA behavior in the following ways:
+- Optimizes VM HA behavior in the following ways:
   - Monitors the virtual machine operating system booting status during virtual machine rebuild or status recovery, and triggers reboot if the booting fails.
   - When SMTX OS is installed on a dedicated physical disk, the host HA behavior is adjusted to reboot when the file system encounters read-only exceptions.<!-- http://jira.smartx.com/browse/ELF-7154 -->
 
 ### Block storage
 
 - Optimizes the granularity of snapshot COW (Copy-on-Write) to reduce the physical capacity used by volume snapshots.
-- Improves read and write performance for non-contiguous I/O for cold data.
+- Optimizes read/write performance for non-contiguous I/O for cold data.
 - Optimizes the data allocation policy to prevent performance fluctuations when the volume size occupies 30% - 50% of the node write cache capacity.
 - Updates the data migration alert to be disabled by default to avoid frequent triggers that might disturb users.
 - Adjusts the bandwidth limits for data recovery and migration to prevent I/O blockage,  and optimizes data recovery for better adaptation to diﬀerent hardware conditions to achieve more stable operations.
@@ -76,7 +76,7 @@ sidebar_label: What's in this release
 - Adds new memory error alerts. <!-- http://jira.smartx.com/browse/OCTO-1468 -->
 - Adjusts the Trial and Subscription license expiration policies for SMTX OS clusters. After expiration, existing resources and enabled features will remain functional, and I/O will be unaﬀected, but new virtual machines or resources cannot be created.
 
-## Resolved issues
+## Fixed Issues
 
 ### Virtualization
 
