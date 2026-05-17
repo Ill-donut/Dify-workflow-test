@@ -12,12 +12,12 @@ sidebar_label: What's in this release
 
 ### Virtualization
 
-- Supports enabling Boost mode in SMTX OS (ELF) active-active clusters.
+- Added support for enabling Boost mode in SMTX OS (ELF) active-active clusters.
 - Allows editing and displaying the IPv6 address and gateway information for VLAN NICs and SR-IOV passthrough NICs on virtual machines.
 - Supports configuring a QoS policy for virtual machine CPU resources.
 - Automatically enables NUMA memory binding for virtual machines with CPU exclusive enabled.
 - Supports mounting CCP devices provided by the Hygon HCT feature on virtual machines.
-- Supports automatically configuring a maximum of 4 virtual disk multi-queues for virtual machines on Intel x86_64 and Kunpeng AArch64 platforms to improve virtual machine performance. <!-- http://jira.smartx.com/browse/ELF-6344 -->
+- Supports automatically configuring a maximum of 4 virtual disk multi-queues for VMs on Intel x86_64 and Kunpeng AArch64 platforms to improve VM performance. <!-- http://jira.smartx.com/browse/ELF-6344 -->
 
 ### Block storage
 
@@ -33,13 +33,13 @@ sidebar_label: What's in this release
 ### Operations and management
 
 - Allows removing hosts and converting the host role on CloudTower.
-- Supports SR-IOV passthrough and PCI passthrough for Netswift NICs.
+- Supports SR-IOV passthrough and PCI passthrough for Wangxun NICs.
 
 ### Kernel
 
 - Supports virtual PTP hardware clock in clusters with the AArch64 architecture to ensure time synchronization between virtual machines and hosts where they reside. <!-- http://jira.smartx.com/browse/SMTXOS-292 -->
 - Supports SSSRAID controller cards. <!-- http://jira.smartx.com/browse/SMTXOS-328 -->
-- Supports Netswift 10GbE NICs of the txgbe series. <!-- http://jira.smartx.com/browse/SMTXOS-290 -->
+- Supports Wangxun 10 GbE NICs of the txgbe series. <!-- http://jira.smartx.com/browse/SMTXOS-290 -->
 - Supports Phytium S5000C CPUs. <!-- http://jira.smartx.com/browse/SMTXOS-258 -->
 
 ## Improvements
@@ -58,7 +58,7 @@ sidebar_label: What's in this release
 - Optimizes the data allocation policy to prevent performance fluctuations when the volume size occupies 30% - 50% of the node write cache capacity.
 - Updates the data migration alert to be disabled by default to avoid frequent triggers that might disturb users.
 - Adjusts the bandwidth limits for data recovery and migration to prevent I/O blockage,  and optimizes data recovery for better adaptation to diﬀerent hardware conditions to achieve more stable operations.
-- Adds pre-upgrade checks to prevent long data recovery time caused by excessive write cache usage, thus avoiding prolonged upgrade duration.
+- Adds upgrade prechecks to prevent long data recovery time caused by excessive write cache usage, thus avoiding prolonged upgrade duration.
 - When data becomes inaccessible due to data loss caused by continuous physical disk or node failures, the temporary replica feature will automatically initiate data recovery.
 - Optimizes the data placement policy for data movements between nodes or between performance and capacity tiers to improve cache hit rates in reading hotspot areas.
 - Shortens I/O interruption when updating storage service configuration during host maintenance or performing cluster upgrades, ensuring that I/O fluctuation perceived by virtual machines is less than 1 second in most scenarios.
@@ -80,7 +80,7 @@ sidebar_label: What's in this release
 
 ### Virtualization
 
-- The `elf-vm-monitor` service might fail to start due to an initialization error in host high availability configuration under rare circumstances. The issue has been resolved in this release. <!-- http://jira.smartx.com/browse/ELF-7178 --> <!-- http://jira.smartx.com/browse/ELF-7181 -->
+- Fixed the issue where, in very rare cases, abnormal initialization of host high availability configuration information might cause the `elf-vm-monitor` service to fail to start. <!-- http://jira.smartx.com/browse/ELF-7178 --> <!-- http://jira.smartx.com/browse/ELF-7181 -->
 - In clusters with Boost mode enabled, double-write issues might occur after a virtual machine was rebuilt via HA due to host failures. The issue has been resolved in this release. <!-- http://jira.smartx.com/browse/ELF-7136 --> <!-- https://cs.smartx.com/knowledgebase/detail?id=6003 -->
 - After ejecting the SMTX VMTools ISO image from the virtual machine operating system and performing a hot migration, the configuration of that virtual machine might not be edited while the virtual machine is in the `Running` state. The issue has been resolved in this release. <!-- http://jira.smartx.com/browse/ELF-7102 --> <!-- https://cs.smartx.com/knowledgebase/detail?id=5883 -->
 - The temporary files from failed virtual machine export tasks were not properly cleaned up, which might lead to unexpected storage usage. The issue has been resolved in this release. <!-- http://jira.smartx.com/browse/ELF-7084 --> <!-- https://cs.smartx.com/knowledgebase/detail?id=5885 -->
