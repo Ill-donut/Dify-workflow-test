@@ -83,6 +83,8 @@ When a technical abbreviation or acronym appears for the first time in a documen
 **Example:**
 - Kernel-based Virtual Machine (KVM) — not just KVM on first use
 - Virtual Machine (VM) — not just VM on first use
+- Job Center Worker (JC Worker) — not just JC Worker on first use
+- Job Center Scheduler (JC Scheduler) — not just JC Scheduler on first use
 
 ---
 
@@ -95,6 +97,19 @@ Prefer precise, active verbs over vague or overly formal constructions. Avoid re
 - "published with" — not "in conjunction with the release of"
 - "the following examples illustrate" — not "below are examples to illustrate"
 - "as follows" — not "summarized as follows"
+- "deliver" — not "provide" (when referring to solutions or features)
+- "built on" — not "developed based on"
+- "schedules" — not "is used to schedule"
+- "provides API access" — not "used to provide API services"
+- "enables" — not "supports" (when referring to communication or functionality)
+- "spawn" — not "generate" (when referring to execution units or processes)
+- "dispatches" — not "distributes" (when referring to tasks)
+- "processes" — not "is processed by" (active voice)
+- "detects" — not "are detected as" (active voice)
+- "illustrates" — not "shows" (when referring to diagrams)
+- "minimize" — not "reduce" (when referring to impact)
+- "undergo" — not "legally transition" (when referring to state changes)
+- "proceed" — not "begin" (when referring to task splitting)
 
 ---
 
@@ -104,6 +119,7 @@ When addressing the reader or user directly, use the second-person pronoun "you"
 
 **Example:**
 - "You can manage the system through a simple web interface" — not "Users can manage the system through simple web interactions"
+- "You only need to access any single node" — not "Users only need to access any one of the nodes"
 
 ---
 
@@ -132,6 +148,14 @@ Eliminate redundant or filler words in headings, bullet points, and sentences. P
 - "Successful Job" — not "Normal Successful Job"
 - "Simple and intuitive Web UI" — not "Simple and easy-to-use Web UI"
 - "The following two examples illustrate" — not "Below are two simple examples to illustrate"
+- "as needed" — not "depending on requirements"
+- "typically" — not "usually"
+- "simultaneously" — not "at the same time"
+- "completes" — not "execution is complete"
+- "stops" — not "ends"
+- "As a result" — not "Therefore"
+- "a collection of" — not "a set of" (when referring to resources)
+- "decomposed" — not "broken down"
 
 ---
 
@@ -144,6 +168,15 @@ Use standard industry terminology and phrasing for technical concepts rather tha
 - "covering most network use cases" — not "meeting most network usage scenarios"
 - "ensuring business continuity" — not "to ensure high business availability"
 - "enters read-only state" — not "enters read-only mode"
+- "proprietary" — not "self-developed" (when referring to SmartX-developed software)
+- "virtualization" — not "virtualized" (when used as an adjective for platform)
+- "learning curve" — not "learning costs"
+- "operational overhead" — not "operations costs"
+- "primary or secondary" — not "master-slave" (when referring to node roles)
+- "quiescing interface" — not "interfaces for silent file systems"
+- "validity of state transitions" — not "legality of transitions between resource states"
+- "statuses" — not "states" (when referring to task or job status)
+- "subtasks" — not "sub-tasks"
 
 ---
 
@@ -174,6 +207,7 @@ Prefer clear and direct introductory phrases over wordy or indirect ones.
 - "The task scheduling rules are as follows:" — not "Task scheduling follows these principles:"
 - "As shown in the diagram above, the concurrent execution steps are as follows:" — not "As shown in the figure above, the concurrent execution steps are summarized as follows:"
 - "Currently, the main scheduled Jobs include:" — not "Currently, the scheduled Jobs mainly include:"
+- "described as follows" — not "shown below" (when referring to relationships)
 
 ---
 
@@ -190,3 +224,27 @@ Use consistent product and component names throughout the document. Do not vary 
 **Examples:**
 - "VMTools Agent" — not "VM VMTools Agent" (avoid redundant abbreviation)
 - "Periodic collection and cleanup tasks" — not "Scheduled collection and cleanup tasks" (use consistent terminology)
+
+---
+
+## Rule 15 — Causal Structures and Standard Phrasing for Explanations
+
+When explaining why a product behaves a certain way, use causal structures (e.g., "as") and standard industry phrasing rather than literal translations.
+
+**Examples:**
+- "ELF is easy to operate and maintain, as unnecessary low-frequency features have been removed, which significantly reduces the system's learning curve and operational overhead." — not "ELF is easy to operate and maintain, and removes a large number of infrequently used features, greatly reducing the learning and operations costs of the system."
+- "because the underlying storage is powered by ZBS" — not "because the underlying storage uses ZBS"
+
+---
+
+## Rule 16 — State and Role Name Formatting: Use Bold for State Names and Capitalize Role Names
+
+When referring to specific states (e.g., Active, Standby, Shutdown, Running) or roles (e.g., Leader, Follower), format state names in **bold** and capitalize role names.
+
+**Examples:**
+- "Across all nodes, exactly one VM Scheduler instance is in the **Active** state and switches together with the ZBS-Meta Leader, while all others remain in the **Standby** state."
+- "Across all nodes, exactly one DHCP Service instance is in the **Active** state and switches together with the ZBS-Meta Leader, while all others remain in the **Standby** state."
+- "Across all nodes, exactly one VM Monitor instance serves as the Leader and switches together with the ZBS-Meta Leader, while the others run as Followers."
+- "JC Worker instances have no primary or secondary distinction; all are in the **Active** state."
+- "Suppose a virtual machine is currently in the **Shutdown** state, and a Job is submitted to bring it to the **Running** state."
+- "transitioning from **Shutdown** to **Running** requires a power-on operation"
