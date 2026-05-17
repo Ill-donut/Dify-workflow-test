@@ -643,3 +643,231 @@ When making recommendations or presenting options, use precise language that cle
 | Chinese source | English translation |
 |---|---|
 | 如果同时支持 'NFS 3' 和 'NFS 4'，建议选择 'NFS 4'。 | If both 'NFS 3' and 'NFS 4' are supported, it is recommended to choose 'NFS 4'. |
+
+---
+
+## Rule 32 — Sentence Structure: Use Precise Ownership and Action Descriptions
+
+When describing the relationship between a product and its actions, use clear ownership structures and precise action verbs. Specify the product or component that performs the action, and use appropriate verb forms for general statements.
+
+**Correct:**
+- The backup service of SMTX Backup & Disaster Recovery backs up entire virtual machines.
+- Backup and recovery can be applied in the following scenarios.
+
+**Incorrect:**
+- SMTX Backup & Disaster Recovery backup service backs up entire virtual machines. *(unclear ownership structure)*
+
+**Examples (Chinese source → English translation):**
+
+| Chinese source | English translation |
+|---|---|
+| SMTX Backup & Disaster Recovery 的备份服务可以备份整个虚拟机。 | The backup service of SMTX Backup & Disaster Recovery backs up entire virtual machines. |
+
+---
+
+## Rule 33 — Sentence Structure: Use Precise Phrasing for Data Reuse Descriptions
+
+When describing the reuse of backup data, use precise phrasing that clearly states the purpose and avoids ambiguity. Use "Leverages...for...avoiding any impact on..." structure for clarity.
+
+**Correct:**
+- **Data reuse**: Leverages backup data for development, testing, troubleshooting, and other purposes, avoiding any impact on the production environment.
+
+**Incorrect:**
+- **Data reuse**: Use backup data for development, testing, troubleshooting, and more, without affecting the production environment. *(imperative — wrong)*
+
+**Examples (Chinese source → English translation):**
+
+| Chinese source | English translation |
+|---|---|
+| 数据复用：将备份数据用于开发、测试、故障排除等场景，不影响生产环境。 | **Data reuse**: Leverages backup data for development, testing, troubleshooting, and other purposes, avoiding any impact on the production environment. |
+
+---
+
+## Rule 34 — Sentence Structure: Use Plural Forms for General Statements and "You Need to Consider" Structure
+
+When making general statements about system components or planning considerations, use plural forms for the components and the "you need to consider" structure for user guidance.
+
+**Correct:**
+- Backup services, backup repositories, backup schedules, and restore point retention policies are the key components you need to consider when creating a backup plan.
+
+**Incorrect:**
+- Backup service, backup repository, backup schedule, and restore point retention policy are the key components you need to consider when creating a backup plan. *(singular — less appropriate for general statements)*
+
+**Examples (Chinese source → English translation):**
+
+| Chinese source | English translation |
+|---|---|
+| 创建备份计划时，您需要考虑备份服务、备份仓库、备份周期和恢复点保留策略。 | Backup services, backup repositories, backup schedules, and restore point retention policies are the key components you need to consider when creating a backup plan. |
+
+---
+
+## Rule 35 — Word Choice: Use Precise Verbs for Classification
+
+When describing how items are grouped or categorized, use precise verbs such as "categorize...based on" and "group...into" to clearly indicate the classification action.
+
+**Correct:**
+- Backup objects can be categorized based on the type of data to be protected.
+- Virtual machines are grouped into backup plans based on their protection requirements.
+
+**Incorrect:**
+- Backup objects can be divided based on the type of data to be protected. *(less precise)*
+
+**Examples (Chinese source → English translation):**
+
+| Chinese source | English translation |
+|---|---|
+| 备份对象可以根据要保护的数据类型进行分类。 | Backup objects can be categorized based on the type of data to be protected. |
+
+---
+
+## Rule 36 — Word Choice: Use Precise Phrasing for Scheduling and RPO Descriptions
+
+When describing backup scheduling and Recovery Point Objective (RPO) settings, use precise language that clearly indicates the user's action and the system's capability.
+
+**Correct:**
+- You can set the appropriate data backup interval based on the RPO target of your business system.
+- The minimum RPO supported by the backup is 15 minutes.
+
+**Incorrect:**
+- You can set the data backup interval according to the RPO of your business system. *(less precise)*
+
+**Examples (Chinese source → English translation):**
+
+| Chinese source | English translation |
+|---|---|
+| 您可以根据业务系统的 RPO 目标设置合适的数据备份间隔。 | You can set the appropriate data backup interval based on the RPO target of your business system. |
+| 备份支持的最小 RPO 为 15 分钟。 | The minimum RPO supported by the backup is 15 minutes. |
+
+---
+
+## Rule 37 — Sentence Structure: Use Precise Phrasing for Policy Definition
+
+When describing how a policy can be defined, use precise phrasing that clearly states the configurable parameters and their purpose.
+
+**Correct:**
+- The restore point retention policy can be defined to specify the number of restore points to be retained and the time range.
+
+**Incorrect:**
+- The recovery point retention policy can be defined to specify the number of restore points to be retained or the time range. *(wrong terminology and ambiguous conjunction)*
+
+**Examples (Chinese source → English translation):**
+
+| Chinese source | English translation |
+|---|---|
+| 恢复点保留策略可以定义要保留的恢复点数量或时间范围。 | The restore point retention policy can be defined to specify the number of restore points to be retained and the time range. |
+
+---
+
+## Rule 38 — Sentence Structure: Use Direct and User-Focused Phrasing for Planning Tasks
+
+When introducing a planning task or describing its purpose, use direct and user-focused phrasing that clearly states the goal of the task.
+
+**Correct:**
+- To plan the capacity required for a backup repository, you need to consider the following factors.
+
+**Incorrect:**
+- The capacity required for a backup repository can be planned by considering the following factors. *(less direct)*
+
+**Examples (Chinese source → English translation):**
+
+| Chinese source | English translation |
+|---|---|
+| 要规划备份仓库所需的容量，需要考虑以下因素。 | To plan the capacity required for a backup repository, you need to consider the following factors. |
+
+---
+
+## Rule 39 — Sentence Structure: Use Precise Phrasing for Service and Resource Consumption Descriptions
+
+When describing how services consume resources, use precise phrasing that clearly indicates the relationship between the service type, the protected object, and the resource consumption.
+
+**Correct:**
+- The backup service and the replication service are consumed based on the type of protected object and the function used.
+- Backing up one virtual machine consumes 1 license unit.
+- Asynchronously replicating one virtual machine consumes 2 license units.
+- Synchronously replicating one virtual machine consumes 4 license units.
+- Asynchronously replicating 1 TiB of storage volume consumes 2 license units.
+
+**Incorrect:**
+- The backup service and replication service are consumed according to the type of protected object and function used. *(less precise)*
+
+**Examples (Chinese source → English translation):**
+
+| Chinese source | English translation |
+|---|---|
+| 备份服务和复制服务根据受保护对象的类型和使用的功能进行消耗。 | The backup service and the replication service are consumed based on the type of protected object and the function used. |
+| 备份一个虚拟机消耗 1 个许可单元。 | Backing up one virtual machine consumes 1 license unit. |
+| 异步复制一个虚拟机消耗 2 个许可单元。 | Asynchronously replicating one virtual machine consumes 2 license units. |
+| 同步复制一个虚拟机消耗 4 个许可单元。 | Synchronously replicating one virtual machine consumes 4 license units. |
+| 异步复制 1 TiB 存储卷消耗 2 个许可单元。 | Asynchronously replicating 1 TiB of storage volume consumes 2 license units. |
+
+---
+
+## Rule 40 — Sentence Structure: Use Direct Phrasing for Planning Recommendations
+
+When providing planning recommendations, use direct phrasing that clearly states the user's required action and the considerations involved.
+
+**Correct:**
+- Therefore, you need to plan the license units required for each backup service and replication service, considering the required services.
+
+**Incorrect:**
+- Therefore, the license units required for each backup service and replication service should be planned considering the required services. *(less direct)*
+
+**Examples (Chinese source → English translation):**
+
+| Chinese source | English translation |
+|---|---|
+| 因此，您需要根据所需服务规划每个备份服务和复制服务所需的许可单元。 | Therefore, you need to plan the license units required for each backup service and replication service, considering the required services. |
+
+---
+
+## Rule 41 — Sentence Structure: Use Active Phrasing for Post-Association Descriptions
+
+When describing the state or action after an association is completed, use active and precise phrasing that clearly indicates the location of the information.
+
+**Correct:**
+- After association, you can view the associated cluster information on the **Associated cluster** dialog box.
+
+**Incorrect:**
+- After the association, the associated cluster information can be viewed on the **Associated cluster** dialog box. *(passive — wrong)*
+
+**Examples (Chinese source → English translation):**
+
+| Chinese source | English translation |
+|---|---|
+| 关联后，可以在“关联集群”对话框中查看关联的集群信息。 | After association, you can view the associated cluster information on the **Associated cluster** dialog box. |
+
+---
+
+## Rule 42 — Word Choice: Use Precise Verbs for Disassociation Actions
+
+When describing the action of removing an association or disconnecting a component, use the precise verb "disassociate" instead of "remove" or other generic terms.
+
+**Correct:**
+- Disassociating clusters
+- If you need to disassociate a cluster from a backup service, follow these steps.
+- It is not allowed to disassociate the cluster from the backup service if there are ongoing backup jobs.
+
+**Incorrect:**
+- Remove Associated Cluster *(imperative and imprecise — wrong)*
+- If you need to remove a cluster from a backup service... *(less precise)*
+
+**Examples (Chinese source → English translation):**
+
+| Chinese source | English translation |
+|---|---|
+| 解除集群关联 | Disassociating clusters |
+| 如果需要将集群从备份服务中解除关联，请执行以下步骤。 | If you need to disassociate a cluster from a backup service, follow these steps. |
+| 如果有正在运行的备份作业，则不允许将集群从备份服务中解除关联。 | It is not allowed to disassociate the cluster from the backup service if there are ongoing backup jobs. |
+
+---
+
+## Rule 43 — Word Choice: Use Precise Verbs for Suspending and Resuming Actions
+
+When describing the action of pausing and restarting a backup plan, use the precise verbs "suspend" and "resume" instead of "pause."
+
+**Correct:**
+- Suspending or resuming a backup plan
+- You can suspend the backup plan to stop automatic execution.
+- After suspension, the backup plan will not be automatically executed.
+
+**Incorrect
